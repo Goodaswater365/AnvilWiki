@@ -53,7 +53,10 @@ const faq = home.faq?.items ?? [];
     <div>
       <p class="text-xs font-bold uppercase tracking-[0.18em] text-nav">{home.hero.badge}</p>
       <h1 id="home-title" class="mt-4 max-w-2xl text-4xl font-black leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
-      <p class="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{home.hero.description}</p>
+      <div class="mt-5 max-w-2xl space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
+        <p><strong class="font-semibold text-foreground">Steal a Superpower</strong> is a Roblox game centered on collecting superpowers and progressing through challenges. Players explore different powers, develop their abilities, and learn how the game's bosses, upgrades, and base systems work together.</p>
+        <p>This independent, fan-made wiki helps you find practical information in one place. Discover power references, beginner guides, boss strategies, code updates, and advice on upgrades and bases. Start with the guides below, explore the power index, or browse individual topics using the navigation. We add specific game details and code claims only when they can be verified.</p>
+      </div>
       <div class="mt-7 flex flex-wrap gap-3">
         <a href={listPath('guides', locale)} class="btn-primary inline-flex items-center gap-2">
           <Icon name="lucide:book-open" class="h-4 w-4" /> Guides
@@ -68,22 +71,6 @@ const faq = home.faq?.items ?? [];
         <Icon name="lucide:image" class="h-12 w-12 opacity-60" />
         <p class="text-sm font-semibold">Game screenshot coming soon</p>
         <p class="max-w-xs text-xs">A verified in-game image will appear here.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About the game: concise, crawlable introduction between Hero and the main categories. -->
-  <section class="border-t border-border py-8 sm:py-10" aria-labelledby="about-game-title">
-    <div class="max-w-4xl">
-      <p class="text-xs font-bold uppercase tracking-wider text-nav">About the game</p>
-      <h2 id="about-game-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">What Is Steal a Superpower?</h2>
-      <div class="mt-4 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
-        <p>
-          <strong class="font-semibold text-foreground">Steal a Superpower</strong> is a Roblox game focused on collecting superpowers and making progress through its gameplay systems. Players can explore different powers, work toward stronger setups, and discover new challenges as they play. Understanding how powers, bosses, upgrades, and base-related features fit together can make it easier to decide what to focus on next.
-        </p>
-        <p>
-          This independent, fan-made wiki brings those topics together in one place. Visit the <a href={listPath('powers', locale)} class="font-medium text-nav hover:underline">Powers</a> section for superpower information, <a href={listPath('guides', locale)} class="font-medium text-nav hover:underline">Guides</a> for beginner help, and <a href={listPath('bosses', locale)} class="font-medium text-nav hover:underline">Bosses</a> for encounter guides. You can also check <a href={listPath('codes', locale)} class="font-medium text-nav hover:underline">Codes</a>, <a href={listPath('upgrades', locale)} class="font-medium text-nav hover:underline">Upgrades</a>, <a href={listPath('base', locale)} class="font-medium text-nav hover:underline">Base</a>, and <a href={listPath('updates', locale)} class="font-medium text-nav hover:underline">Updates</a>. Game details and codes are published as verified information becomes available, rather than presented as confirmed before they have been checked.
-        </p>
       </div>
     </div>
   </section>
