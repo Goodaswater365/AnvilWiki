@@ -48,30 +48,41 @@ const faq = home.faq?.items ?? [];
 ---
 
 <LocaleLayout locale={locale} title={meta.title} description={meta.description} alternates={alternates} jsonLd={jsonLd}>
-  <!-- 01: Hero — left copy and two actions, right reserved for a real game screenshot. -->
-  <section class="grid items-center gap-7 py-8 sm:py-12 lg:grid-cols-2 lg:gap-10 lg:py-16" aria-labelledby="home-title">
-    <div>
-      <p class="text-xs font-bold uppercase tracking-[0.18em] text-nav">{home.hero.badge}</p>
-      <h1 id="home-title" class="mt-4 max-w-2xl text-4xl font-black leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
-      <div class="mt-5 max-w-2xl space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
-        <p><strong class="font-semibold text-foreground">Steal a Superpower</strong> is a Roblox game centered on collecting superpowers and progressing through challenges. Players explore different powers, develop their abilities, and learn how the game's bosses, upgrades, and base systems work together.</p>
-        <p>This independent, fan-made wiki helps you find practical information in one place. Discover power references, beginner guides, boss strategies, code updates, and advice on upgrades and bases. Start with the guides below, explore the power index, or browse individual topics using the navigation. We add specific game details and code claims only when they can be verified.</p>
-      </div>
-      <div class="mt-7 flex flex-wrap gap-3">
-        <a href={listPath('guides', locale)} class="btn-primary inline-flex items-center gap-2">
-          <Icon name="lucide:book-open" class="h-4 w-4" /> Guides
-        </a>
-        <a href={listPath('powers', locale)} class="btn-outline inline-flex items-center gap-2">
-          <Icon name="lucide:zap" class="h-4 w-4" /> Powers
-        </a>
-      </div>
-    </div>
-    <div class="flex min-h-52 items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 p-8 sm:min-h-64 lg:min-h-80">
+  <!-- 01: Hero — natural text flow around a right-floated, half-width game image. -->
+  <section class="flow-root py-8 sm:py-12 lg:py-16" aria-labelledby="home-title">
+    <!-- Desktop: the image floats right so heading and body text naturally wrap beside it.
+         Below the image, text returns to the full content width. -->
+    <div class="relative hidden aspect-video w-1/2 items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 p-6 md:float-right md:mb-4 md:ml-6 md:flex" aria-label="Game screenshot placeholder">
       <div class="flex flex-col items-center gap-3 text-center text-muted-foreground">
         <Icon name="lucide:image" class="h-12 w-12 opacity-60" />
         <p class="text-sm font-semibold">Game screenshot coming soon</p>
         <p class="max-w-xs text-xs">A verified in-game image will appear here.</p>
       </div>
+    </div>
+
+    <p class="text-xs font-bold uppercase tracking-[0.18em] text-nav">{home.hero.badge}</p>
+    <h1 id="home-title" class="mt-4 text-4xl font-black leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
+
+    <!-- Mobile: title first, then full-width image, then readable text. -->
+    <div class="mt-6 flex aspect-video w-full items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 p-6 md:hidden" aria-label="Game screenshot placeholder">
+      <div class="flex flex-col items-center gap-2 text-center text-muted-foreground">
+        <Icon name="lucide:image" class="h-9 w-9 opacity-60" />
+        <p class="text-sm font-semibold">Game screenshot coming soon</p>
+      </div>
+    </div>
+
+    <div class="mt-5 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
+      <p><strong class="font-semibold text-foreground">Steal a Superpower</strong> is a Roblox game centered on collecting superpowers and progressing through challenges. Players explore different powers, develop their abilities, and learn how the game's bosses, upgrades, and base systems work together.</p>
+      <p>This independent, fan-made wiki helps you find practical information in one place. Discover power references, beginner guides, boss strategies, code updates, and advice on upgrades and bases. Start with the guides below, explore the power index, or browse individual topics using the navigation. We add specific game details and code claims only when they can be verified.</p>
+    </div>
+
+    <div class="clear-both flex flex-wrap gap-3 pt-7">
+      <a href={listPath('guides', locale)} class="btn-primary inline-flex items-center gap-2">
+        <Icon name="lucide:book-open" class="h-4 w-4" /> Guides
+      </a>
+      <a href={listPath('powers', locale)} class="btn-outline inline-flex items-center gap-2">
+        <Icon name="lucide:zap" class="h-4 w-4" /> Powers
+      </a>
     </div>
   </section>
 
