@@ -161,14 +161,14 @@
   },
   "home": {
     "meta": {
-      "title": "Anvil Quest Wiki - Complete Boss Guides, Codes & Tier Lists",
-      "description": "The most complete Anvil Quest wiki. Boss strategies, active codes, item locations, tier lists, and beginner guides. Every page shows when it was last verified."
+   "title": "Steal a Superpower Wiki – Guides, Codes & Superpowers",
+   "description": "Explore Steal a Superpower guides, codes, superpowers, items, and beginner tips for Roblox players.",
     },
     "hero": {
       "badge": "Fan-Made Community Wiki",
-      "title": "Anvil Quest Wiki",
-      "description": "Your complete guide to Anvil Quest. Boss strategies, active codes, item locations, tier lists, and everything you need to master the forge.",
-      "ctaPrimary": "Play Anvil Quest",
+    "title": "Steal a Superpower Wiki",
+    "description": "Your independent guide to Steal a Superpower on Roblox. Explore superpowers, beginner guides, codes, items, and useful strategies.",
+     "ctaPrimary": "",
       "ctaSecondary": "Browse Guides",
       "videoId": ""
     },
@@ -177,35 +177,35 @@
     },
     "start": {
       "badge": "Start Here",
-      "title": "Your Anvil Quest Journey",
+   "title": "Start Your Superpower Journey",
       "cards": [
         {
           "number": "1",
           "title": "Beginner Guide",
-          "description": "New to Anvil Quest? Start here with the essential mechanics, controls, and your first hour walkthrough.",
+       "description": "New to Steal a Superpower? Learn the basics, explore the game, and discover tips to get started.",
           "icon": "lucide:book-open",
           "href": "/guides/beginner-guide"
         },
         {
           "number": "2",
           "title": "Active Codes",
-          "description": "Redeem the latest codes for free coins, gems, and exclusive cosmetic items.",
+      "description": "Find the latest Steal a Superpower codes and learn how to redeem them. Rewards are subject to availability.",
           "icon": "lucide:gift",
           "href": "/codes"
         },
         {
           "number": "3",
-          "title": "Boss Strategies",
-          "description": "Complete guides for every boss with attack patterns, weaknesses, and recommended loadouts.",
+       "title": "Superpower Guides",
+    "description": "Explore superpowers, learn how they work, and discover useful strategies.",
           "icon": "lucide:swords",
-          "href": "/bosses"
+   "href": "/guides"
         },
         {
           "number": "4",
-          "title": "Weapon Tier List",
-          "description": "Ranking every weapon from S to C based on DPS, utility, and synergy.",
+      "title": "Superpower Tier List",
+ "description": "Compare different superpowers and discover their strengths and weaknesses.",
           "icon": "lucide:list-ordered",
-          "href": "/guides/weapon-tier-list"
+        "href": "/guides"
         }
       ]
     },
