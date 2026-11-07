@@ -35,15 +35,15 @@ pages_build_output_dir = "dist"
 
 [vars]
 # Site (must include https:// protocol — Astro validates this as a URL)
-SITE_URL = "https://anvil.wiki"
+SITE_URL = "https://anvilwiki-9x8.pages.dev"
 # Legacy IndexNow override for the anvil.wiki demo deployment.
 # New forks generate and commit .indexnow-key during initialization.
-INDEXNOW_KEY = "736d8608fdec899849d382dffdaf4dda78605ffe0f40e2f1dbb57c7390341bed"
+
 # Giscus comments (DEMO — anvil.wiki points at PNGTRID/AnvilWiki Discussions)
-PUBLIC_GISCUS_REPO = "PNGTRID/AnvilWiki"
-PUBLIC_GISCUS_REPO_ID = "R_kgDOT1aRPQ"
-PUBLIC_GISCUS_CATEGORY = "Announcements"
-PUBLIC_GISCUS_CATEGORY_ID = "DIC_kwDOT1aRPc4DDODo"
+PUBLIC_GISCUS_REPO = ""
+PUBLIC_GISCUS_REPO_ID = ""
+PUBLIC_GISCUS_CATEGORY = ""
+PUBLIC_GISCUS_CATEGORY_ID = ""
 PUBLIC_GISCUS_MAPPING = "pathname"
 # Sponsor card (empty = disabled, keeps Lighthouse 4×100 out of the box)
 PUBLIC_SPONSOR_URL = ""
@@ -66,17 +66,18 @@ PUBLIC_CF_BEACON_TOKEN = ""
 # sidebar-300x250 已建未挂载(唯一挂载点 WikiSidebar 在文章页恒 compact 不渲染广告,与
 # AdSense SidebarAd 同门,挂载权留给站长); sticky-320x50 = 文章页移动端底部锚位
 # (MobileAnchorAd,可一键关闭/零 CLS/同意后才加载;顶部 sticky 仍排除,StickyBanner 注释)。
-PUBLIC_ADSTERRA_SLOT_SIDEBAR_300X250 = "72f65aae2e14988904cffe17cfe697e2"
-PUBLIC_ADSTERRA_SLOT_INCONTENT_728X90 = "e0dce7760389a360cba34b93333ea2d0"
-PUBLIC_ADSTERRA_SLOT_NATIVE_BANNER = "8fabf9ea9ed2d89cba2ff9888f939c26"
-PUBLIC_ADSTERRA_SLOT_SIDEBAR_160X300 = "89fabda9f10bc13544cae84f0211d77c"
-PUBLIC_ADSTERRA_SLOT_SIDEBAR_160X600 = "fba4ed072bed8749c56ebcf099b30f0e"
-PUBLIC_ADSTERRA_SLOT_STICKY_320X50 = "e2ad36227bacdad94a4bfe6a9a6d3dac"
-# Google Analytics (consent-gated — loads only after the visitor accepts)
-PUBLIC_GA_ID = "G-X10CG7N6P6"
-# VibeCafé product telemetry (demo anvil.wiki ids) — both set = injected on
-# every page; fork users: leave both commented to keep the site clean.
-PUBLIC_VIBECAFE_PRODUCT_ID = "cmvdec106000002nyeuo0o767"
-PUBLIC_VIBECAFE_AUTH_KEY = "vc_web_l7OmJ4CD2hLlHkHojq3-M7p0FsluYhiiRjAew-vwKG0"
+
+PUBLIC_ADSTERRA_SLOT_SIDEBAR_300X250 = ""
+PUBLIC_ADSTERRA_SLOT_INCONTENT_728X90 = ""
+PUBLIC_ADSTERRA_SLOT_NATIVE_BANNER = ""
+PUBLIC_ADSTERRA_SLOT_SIDEBAR_160X300 = ""
+PUBLIC_ADSTERRA_SLOT_SIDEBAR_160X600 = ""
+PUBLIC_ADSTERRA_SLOT_STICKY_320X50 = ""
+
+PUBLIC_GA_ID = ""
+
+PUBLIC_VIBECAFE_PRODUCT_ID = ""
+PUBLIC_VIBECAFE_AUTH_KEY = ""
+
 # Google Search Console verification meta token
 #PUBLIC_GSC_VERIFICATION = ""
