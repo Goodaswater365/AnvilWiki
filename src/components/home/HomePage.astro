@@ -72,6 +72,22 @@ const faq = home.faq?.items ?? [];
     </div>
   </section>
 
+  <!-- About the game: concise, crawlable introduction between Hero and the main categories. -->
+  <section class="border-t border-border py-8 sm:py-10" aria-labelledby="about-game-title">
+    <div class="max-w-4xl">
+      <p class="text-xs font-bold uppercase tracking-wider text-nav">About the game</p>
+      <h2 id="about-game-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">What Is Steal a Superpower?</h2>
+      <div class="mt-4 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
+        <p>
+          <strong class="font-semibold text-foreground">Steal a Superpower</strong> is a Roblox game focused on collecting superpowers and making progress through its gameplay systems. Players can explore different powers, work toward stronger setups, and discover new challenges as they play. Understanding how powers, bosses, upgrades, and base-related features fit together can make it easier to decide what to focus on next.
+        </p>
+        <p>
+          This independent, fan-made wiki brings those topics together in one place. Visit the <a href={listPath('powers', locale)} class="font-medium text-nav hover:underline">Powers</a> section for superpower information, <a href={listPath('guides', locale)} class="font-medium text-nav hover:underline">Guides</a> for beginner help, and <a href={listPath('bosses', locale)} class="font-medium text-nav hover:underline">Bosses</a> for encounter guides. You can also check <a href={listPath('codes', locale)} class="font-medium text-nav hover:underline">Codes</a>, <a href={listPath('upgrades', locale)} class="font-medium text-nav hover:underline">Upgrades</a>, <a href={listPath('base', locale)} class="font-medium text-nav hover:underline">Base</a>, and <a href={listPath('updates', locale)} class="font-medium text-nav hover:underline">Updates</a>. Game details and codes are published as verified information becomes available, rather than presented as confirmed before they have been checked.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- 02-05: Compact 2×2 category overview, as approved in the homepage wireframe. -->
   <section class="border-t border-border py-9 sm:py-12" aria-label="Main wiki categories">
     <div class="grid gap-4 md:grid-cols-2">
