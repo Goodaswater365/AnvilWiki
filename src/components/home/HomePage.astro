@@ -46,7 +46,10 @@ const ui = getUi(locale);
 const home = ui.home;
 const shared = ui.shared;
 
-const recent = await getRecentEntries(locale, 6);
+// Only show game-specific articles; hide unrelated demo/SaaS posts.
+const recent = (await getRecentEntries(locale, 30))
+  .filter((entry) => entry.data.title.toLowerCase().includes('steal a superpower'))
+  .slice(0, 6);
 
 // Coupon-hub homepage strip: a compact live-deals board (3 merchants × 2
 // active codes) aggregated from the codes category. Gated on the build-time
@@ -118,7 +121,7 @@ function trendingLabel(link: QuickLink): string {
     {/* Faint game-name watermark — pure CSS, no image asset required. */}
     <span
       aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center text-[18vw] font-black leading-none text-foreground/[0.03] md:text-[14vw]"
+      class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center text-[9vw] font-black leading-none text-foreground/[0.025] md:text-[7vw]"
     >
       {site.game.name}
     </span>
@@ -276,7 +279,7 @@ function trendingLabel(link: QuickLink): string {
 
   {/* ─────────────────────────────── Final CTA ────────────────────────── */}
   {
-    closingCta.title && (
+    closingCta.title && closingCta.primary && (
       <section class="section border-t border-border">
         <div class="rounded-xl border bg-card p-8 text-center md:p-12">
           <h2 class="text-2xl font-bold md:text-3xl">{closingCta.title}</h2>
