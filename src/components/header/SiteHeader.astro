@@ -102,7 +102,9 @@ const samePagePathFor = (loc: Locale) => {
       )}
       <SearchButton locale={locale} />
       <ThemeToggle />
-      <LanguageSwitcher locale={locale} pathFor={samePagePathFor} availableLocales={availableLocales} />
+      {locales.length > 1 && (
+        <LanguageSwitcher locale={locale} pathFor={samePagePathFor} availableLocales={availableLocales} />
+      )}
 
       {/* Mobile menu */}
       <details class="relative md:hidden">
@@ -131,8 +133,8 @@ const samePagePathFor = (loc: Locale) => {
               </a>
             ))
           }
-          {/* Language switcher for mobile — flat list, not nested dropdown */}
-          <div class="border-t border-border pt-1">
+          {/* Only show language options when multiple languages are published. */}
+          {locales.length > 1 && <div class="border-t border-border pt-1">
             <div class="flex items-center gap-1 px-3 pb-1 text-xs text-muted-foreground">
               <Icon name="lucide:globe" class="h-3 w-3" />
               <span>{nav.language ?? 'Language'}</span>
@@ -158,7 +160,7 @@ const samePagePathFor = (loc: Locale) => {
                 {zhLandingLink.label}
               </a>
             )}
-          </div>
+          </div>}
           {landingLinkEnabled && (
             <a
               href={landingLink.href}
