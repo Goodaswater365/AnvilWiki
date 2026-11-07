@@ -1,11 +1,11 @@
 {
   "$schema": "../../docs/home.schema.json",
   "site": {
-    "name": "Anvil Quest Wiki",
-    "shortName": "AQ Wiki",
-    "description": "Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Every guide carries a last-verified date.",
-    "tagline": "Your forge for everything Anvil Quest",
-    "legalNotice": "Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer."
+    "name": "Steal a Superpower Wiki",
+    "shortName": "Superpower Wiki",
+    "description": "Independent English-language guides, game information and tips for Steal a Superpower on Roblox.",
+    "tagline": "Your Guide to Steal a Superpower",
+    "legalNotice": "Steal a Superpower Wiki is an independent fan-made website and is not affiliated with Roblox or the game's developers."
   },
   "nav": {
     "home": "Home",
@@ -60,20 +60,20 @@
     },
     "codesFaq": [
       {
-        "question": "How do I redeem codes?",
-        "answer": "Open the game, click the settings gear in the top-right, paste your code into the Redeem Code field, and confirm. Codes are case-sensitive."
+        "question": "Where can I find verified codes?",
+        "answer": "Check this wiki's Codes section. Unverified codes are not presented as active."
       },
       {
-        "question": "Why do codes stop working?",
-        "answer": "Codes expire on a schedule set by the developer (usually monthly or tied to update milestones), and some are one-per-account. This page is re-tested regularly."
+        "question": "How do I redeem a code?",
+        "answer": "Check the game's current interface and official instructions, since redemption steps may change."
       },
       {
-        "question": "How often are new codes released?",
-        "answer": "New codes typically arrive with each major game update. Bookmark this page and check back after every patch."
+        "question": "Why might a code not work?",
+        "answer": "It may be expired, mistyped, restricted, or invalid for this game."
       },
       {
-        "question": "Do codes expire?",
-        "answer": "Yes — most codes have an expiry date, shown next to each code. Expired codes move to the expired table below."
+        "question": "How often are codes updated?",
+        "answer": "The wiki adds verified information as reliable sources become available."
       }
     ],
     "possiblyOutdated": "This guide was last checked on",
@@ -140,19 +140,19 @@
   "overview": {
     "bosses": {
       "overviewTitle": "All Bosses",
-      "overviewDescription": "Complete strategy guides for every boss in Anvil Quest, including attack patterns, weaknesses, and recommended loadouts."
+      "overviewDescription": "Browse Steal a Superpower boss information as verified guides become available."
     },
     "guides": {
       "overviewTitle": "All Guides",
-      "overviewDescription": "In-depth tutorials covering progression, crafting, combat mechanics, and advanced strategies for Anvil Quest."
+      "overviewDescription": "Find beginner tips, gameplay information and strategies for Steal a Superpower."
     },
     "items": {
       "overviewTitle": "All Items",
-      "overviewDescription": "Comprehensive item database with locations, stats, rarity tiers, and crafting recipes."
+      "overviewDescription": "Browse reference information about items and superpowers as details are verified."
     },
     "codes": {
       "overviewTitle": "All Codes",
-      "overviewDescription": "Active Anvil Quest codes for free coins, gems, and exclusive items. Verified daily."
+      "overviewDescription": "Find Steal a Superpower code information; only verified codes will be labeled active."
     },
     "recipes": {
       "overviewTitle": "All Recipes",
@@ -161,14 +161,14 @@
   },
   "home": {
     "meta": {
-   "title": "Steal a Superpower Wiki – Guides, Codes & Superpowers",
-   "description": "Explore Steal a Superpower guides, codes, superpowers, items, and beginner tips for Roblox players.",
+      "title": "Steal a Superpower Wiki – Guides, Codes & Superpowers",
+      "description": "Explore Steal a Superpower guides, codes, superpowers, items and beginner tips for Roblox players."
     },
     "hero": {
       "badge": "Fan-Made Community Wiki",
-    "title": "Steal a Superpower Wiki",
-    "description": "Your independent guide to Steal a Superpower on Roblox. Explore superpowers, beginner guides, codes, items, and useful strategies.",
-     "ctaPrimary": "",
+      "title": "Steal a Superpower Wiki",
+      "description": "Your independent guide to Steal a Superpower on Roblox. Explore superpowers, beginner guides, codes, items and useful strategies.",
+      "ctaPrimary": "",
       "ctaSecondary": "Browse Guides",
       "videoId": ""
     },
@@ -177,226 +177,130 @@
     },
     "start": {
       "badge": "Start Here",
-   "title": "Start Your Superpower Journey",
+      "title": "Start Your Superpower Journey",
       "cards": [
         {
           "number": "1",
           "title": "Beginner Guide",
-       "description": "New to Steal a Superpower? Learn the basics, explore the game, and discover tips to get started.",
+          "description": "New to Steal a Superpower? Learn the basics and find useful tips to get started.",
           "icon": "lucide:book-open",
-          "href": "/guides/beginner-guide"
+          "href": "/guides"
         },
         {
           "number": "2",
-          "title": "Active Codes",
-      "description": "Find the latest Steal a Superpower codes and learn how to redeem them. Rewards are subject to availability.",
+          "title": "Codes",
+          "description": "Find code information and learn which rewards have been verified.",
           "icon": "lucide:gift",
           "href": "/codes"
         },
         {
           "number": "3",
-       "title": "Superpower Guides",
-    "description": "Explore superpowers, learn how they work, and discover useful strategies.",
+          "title": "Superpower Guides",
+          "description": "Explore superpowers and strategies as verified guides are published.",
           "icon": "lucide:swords",
-   "href": "/guides"
+          "href": "/guides"
         },
         {
           "number": "4",
-      "title": "Superpower Tier List",
- "description": "Compare different superpowers and discover their strengths and weaknesses.",
+          "title": "Superpower Tier List",
+          "description": "Browse available comparisons and guides about different superpowers.",
           "icon": "lucide:list-ordered",
-        "href": "/guides"
+          "href": "/guides"
         }
       ]
     },
     "popular": {
       "badge": "Trending Now",
-      "title": "Most Read This Week",
+      "title": "Explore the Wiki",
       "quickLinks": [
         {
-          "label": "Emberfang Boss Guide",
-          "href": "/bosses/emberfang"
+          "label": "Beginner Guides",
+          "href": "/guides"
         },
         {
-          "label": "Best Weapons Tier List",
-          "href": "/guides/weapon-tier-list"
+          "label": "Superpower Guides",
+          "href": "/guides"
         },
         {
-          "label": "Beginner Guide",
-          "href": "/guides/beginner-guide"
-        },
-        {
-          "label": "All Active Codes",
+          "label": "All Codes",
           "href": "/codes"
+        },
+        {
+          "label": "Items",
+          "href": "/items"
         }
       ]
     },
     "explore": {
       "title": "Explore the Wiki",
-      "description": "Everything you need, organized by category. Pick a topic and dive in.",
+      "description": "Browse guides and reference pages. New verified content is being added.",
       "modules": [
         {
           "order": 1,
-          "name": "Anvil Quest Codes",
-          "description": "Active codes for free coins, gems, and exclusive items. Updated daily.",
+          "name": "Steal a Superpower Codes",
+          "description": "Code information will be listed here after verification.",
           "href": "/codes",
           "displayType": "badge-list",
           "highlights": [
             {
-              "label": "HALLOWEEN-2026",
-              "detail": "+300 Gold · expires Nov 8",
-              "badge": "Active"
-            },
-            {
-              "label": "ADVENT-2026",
-              "detail": "+250 Gold · expires Dec 25",
-              "badge": "Active"
-            },
-            {
-              "label": "GRATITUDE-2026",
-              "detail": "+500 Gold · expires Nov 30",
-              "badge": "Active"
-            },
-            {
-              "label": "HEARTHFIRE-2026",
-              "detail": "+600 Gold · expires Nov 30 (extended)",
-              "badge": "Active"
-            },
-            {
-              "label": "ASHENKEEP",
-              "detail": "Ashen Keep cosmetic set",
-              "badge": "Active"
-            },
-            {
-              "label": "NEWPLAYER",
-              "detail": "Starter bundle (new accounts)",
-              "badge": "Active"
+              "label": "Verification pending",
+              "detail": "No verified active codes published yet",
+              "badge": "Pending"
             }
           ]
         },
         {
           "order": 2,
-          "name": "Boss Strategies",
-          "description": "Complete guides for every boss with attack patterns and weaknesses.",
-          "href": "/bosses",
+          "name": "Superpower Guides",
+          "description": "Learn about superpowers as reliable details are documented.",
+          "href": "/guides",
           "displayType": "labeled-cards",
           "highlights": [
             {
-              "label": "Emberfang",
-              "detail": "Frost warden, early-game gatekeeper"
+              "label": "Getting Started",
+              "detail": "Beginner-friendly guides"
             },
             {
-              "label": "Stormcaller",
-              "detail": "Fire titan, mid-game DPS check"
-            },
-            {
-              "label": "Voidking",
-              "detail": "Final boss, requires full prep"
+              "label": "Game Mechanics",
+              "detail": "Verified explanations as available"
             }
           ]
         },
         {
           "order": 3,
-          "name": "Progression Guides",
-          "description": "Leveling routes, class builds, and endgame preparation.",
+          "name": "Beginner Progression",
+          "description": "A starting point for new players.",
           "href": "/guides",
           "displayType": "steps",
           "highlights": [
             {
               "label": "1",
-              "detail": "Pick a starting class"
+              "detail": "Read the beginner guides"
             },
             {
               "label": "2",
-              "detail": "Clear the tutorial forge"
+              "detail": "Explore the game's basic systems"
             },
             {
               "label": "3",
-              "detail": "Unlock the Shattered Isles"
-            },
-            {
-              "label": "4",
-              "detail": "Defeat your first world boss"
+              "detail": "Check for new information"
             }
           ]
         },
         {
           "order": 4,
-          "name": "Weapon Tier List",
-          "description": "Ranking every weapon from S to C based on DPS, utility, and synergy.",
-          "href": "/guides/weapon-tier-list",
+          "name": "Items & Resources",
+          "description": "Reference information about available items.",
+          "href": "/items",
           "displayType": "ranked-grid",
           "highlights": [
             {
-              "label": "S",
-              "detail": "Voidforge Blade, Stormcaller"
+              "label": "Guide",
+              "detail": "Item information"
             },
             {
-              "label": "A",
-              "detail": "Emberclaw, Frostpike"
-            },
-            {
-              "label": "B",
-              "detail": "Ironwood Bow, Mace of Dawn"
-            },
-            {
-              "label": "C",
-              "detail": "Starter weapons"
-            }
-          ]
-        },
-        {
-          "order": 5,
-          "name": "Update History",
-          "description": "Major patches and events, newest first.",
-          "href": "/recent",
-          "displayType": "timeline",
-          "highlights": [
-            {
-              "label": "v2.5",
-              "detail": "New raid: Shadowforge released",
-              "badge": "Latest"
-            },
-            {
-              "label": "v2.4",
-              "detail": "Rebalanced all S-tier weapons"
-            },
-            {
-              "label": "v2.3",
-              "detail": "Added 3 new bosses"
-            },
-            {
-              "label": "v2.2",
-              "detail": "Launched season pass system"
-            }
-          ]
-        },
-        {
-          "order": 6,
-          "name": "Video Guides",
-          "description": "Watch the best Anvil Quest walkthroughs and boss fights.",
-          "href": "/guides",
-          "displayType": "video-grid",
-          "highlights": [
-            {
-              "title": "Beginner Walkthrough",
-              "youtubeId": "dQw4w9WgXcQ",
-              "duration": "12:34"
-            },
-            {
-              "title": "All Bosses Ranked",
-              "youtubeId": "aaaaaaaaaaa",
-              "duration": "18:42"
-            },
-            {
-              "title": "Speedrun Guide",
-              "youtubeId": "bbbbbbbbbbb",
-              "duration": "25:10"
-            },
-            {
-              "title": "Hidden Secrets",
-              "youtubeId": "ccccccccccc",
-              "duration": "9:15"
+              "label": "Tips",
+              "detail": "Useful resources"
             }
           ]
         }
@@ -404,39 +308,35 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "description": "Quick answers to the most common questions about Anvil Quest.",
+      "description": "General information about this game and independent wiki.",
       "items": [
         {
-          "question": "What is Anvil Quest?",
-          "answer": "Anvil Quest is a fantasy RPG on Roblox where you play as a blacksmith apprentice forging weapons and battling bosses across the Shattered Isles. It launched in January 2026 and has over 12 million visits."
+          "question": "What is Steal a Superpower?",
+          "answer": "Steal a Superpower is a Roblox game. This fan-made wiki is being developed to document gameplay and strategies."
         },
         {
-          "question": "Which class should beginners pick in Anvil Quest?",
-          "answer": "Warrior is the most beginner-friendly class thanks to high HP and simple mechanics. Once you understand the game, Rogue offers the highest damage output for experienced players."
+          "question": "Is this an official website?",
+          "answer": "No. This wiki is independently maintained and is not affiliated with Roblox or the game's developers."
         },
         {
-          "question": "How do I redeem codes in Anvil Quest?",
-          "answer": "Open the game, click the settings gear in the top-right, paste your code into the 'Redeem Code' field, and hit confirm. Codes are case-sensitive."
+          "question": "Where can I find verified codes?",
+          "answer": "Check the Codes section. Codes will only be labeled active after verification."
         },
         {
-          "question": "Is Anvil Quest free to play?",
-          "answer": "Yes, Anvil Quest is completely free on Roblox. There are optional cosmetic microtransactions, but they do not affect gameplay balance."
-        },
-        {
-          "question": "How often does Anvil Quest update?",
-          "answer": "Forge Studios releases major content updates roughly every two weeks, with smaller hotfixes in between. New bosses and codes are typically added with each major patch."
+          "question": "Where are the beginner guides?",
+          "answer": "Start with the Guides section. Additional content is being prepared."
         }
       ]
     },
     "closingCta": {
-      "title": "Ready to Master the Forge?",
-      "description": "Bookmark this wiki and check back daily for new codes, boss guides, and tier list updates.",
-      "primary": "Play Anvil Quest",
-      "secondary": "Join Our Discord"
+      "title": "Explore Steal a Superpower",
+      "description": "Browse the guides and check back for verified updates.",
+      "primary": "",
+      "secondary": ""
     }
   },
   "footer": {
-    "playGame": "Play Anvil Quest",
+    "playGame": "Play Steal a Superpower",
     "officialDiscord": "Official Discord",
     "officialYoutube": "Official YouTube",
     "officialTwitter": "Official Twitter",
@@ -447,7 +347,7 @@
     "termsOfService": "Terms of Service",
     "copyright": "Copyright",
     "contact": "Contact",
-    "copyrightText": "© 2026 Anvil Quest Wiki. Fan-made, not affiliated with Forge Studios.",
+    "copyrightText": "© 2026 Steal a Superpower Wiki. Independent fan-made website.",
     "community": "Community",
     "legal": "Legal"
   }
