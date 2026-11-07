@@ -1,311 +1,203 @@
 ---
 /**
- * HomePage — renders the homepage from the locale JSON `home` namespace.
- *
- * Data-driven: changing src/locales/en.json updates the homepage without
- * touching this component.
- *
- * Sections (top to bottom):
- *   1. Hero          — title, description, CTAs (strong visual anchor)
- *   2. QuickStart    — 4 large icon cards (Codes / Bosses / Guides / Tier)
- *   3. Recent Updates + Trending links (two columns)
- *   4. Explore       — 4 content modules with displayTypes
- *   5. ClosingCta      — bottom call-to-action
- *
- * v0.2 refactor: trimmed from 8 sections to 5. Removed GameInfo (info
- * duplicated Hero stats), FAQ (moved to /faq), standalone TrendingNow
- * (merged into Recent Updates). Explore modules trimmed 8→4. Page length
- * compressed from ~7 screens to ~4.
+ * English-first wiki home. Content cards are populated from published,
+ * indexable MDX entries; no invented gameplay stats or codes.
  */
 import { Icon } from 'astro-icon/components';
 import LocaleLayout from '~/components/layout/LocaleLayout.astro';
-import VideoSection from '~/components/home/VideoSection.astro';
-import QuickStart from '~/components/home/QuickStart.astro';
-import ExploreModules from '~/components/home/ExploreModules.astro';
-import DealsOverview from '~/components/article/DealsOverview.astro';
 import { site } from '~/config/site';
-import { NAVIGATION_CONFIG } from '~/config/navigation';
 import { type Locale } from '~/i18n/routing';
-import { getUi, type HomeUi } from '~/i18n/ui';
+import { getUi } from '~/i18n/ui';
 import { getEntriesByCategory, getRecentEntries, parseEntryId } from '~/lib/content';
-import { toDealMerchants } from '~/lib/content-utils';
-import { localizePath, listPath, detailPath } from '~/lib/url';
+import { detailPath, listPath } from '~/lib/url';
 
 interface Props {
   locale: Locale;
   jsonLd?: Record<string, unknown>[];
-  /** hreflang alternates (built by the route page). */
   alternates?: Array<{ hreflang: string; href: string }>;
 }
 const { locale, jsonLd = [], alternates = [] } = Astro.props;
 const ui = getUi(locale);
-// Typed straight from en.json (HomeUi) — no `as any`: a renamed key now
-// fails typecheck instead of silently blanking the block (check-i18n only
-// compares locale↔en, not component↔en; tests/home-ui.test.ts pins the
-// access surface at the JSON level too).
 const home = ui.home;
-const shared = ui.shared;
-
-// Only show game-specific articles; hide unrelated demo/SaaS posts.
-const recent = (await getRecentEntries(locale, 30))
-  .filter((entry) => entry.data.title.toLowerCase().includes('steal a superpower'))
-  .slice(0, 6);
-
-// Coupon-hub homepage strip: a compact live-deals board (3 merchants × 2
-// active codes) aggregated from the codes category. Gated on the build-time
-// siteType signal — game-wiki forks never carry the line, so this stays dead
-// code there and the default output is byte-identical. Title/CTA reuse
-// existing keys (overview.codes / shared.browseAll) — zero new i18n.
-const couponDeals =
-  site.siteType === 'coupon-hub'
-    ? await (async () => {
-        const entries = await getEntriesByCategory('codes', locale);
-        const overview = ui.overview as Record<string, { overviewTitle?: string }> | undefined;
-        return {
-          title:
-            overview?.codes?.overviewTitle ??
-            (ui.nav as Record<string, string>).codes ??
-            'Deals',
-          merchants: toDealMerchants(entries)
-            .slice(0, 3)
-            .map((m) => ({ ...m, href: detailPath('codes', m.slug, locale) })),
-        };
-      })()
-    : null;
-
-// Per-field fallbacks: a locale JSON whose meta object exists but lacks
-// title/description must not pass undefined into BaseLayout (title.includes
-// crashes the build) — same spirit as the ?? defaults below.
 const meta = {
   title: home.meta?.title ?? site.name,
   description: home.meta?.description ?? site.description,
 };
-// Section namespaces come from en.json verbatim (getUi deep-merges non-en
-// locales over en), so every key is guaranteed present — no per-section
-// `{ cards: [] }`-style fallbacks and no hardcoded English anywhere. A key
-// missing from en.json itself is a build-time typecheck failure, not a
-// blanked section at runtime.
-const hero: HomeUi['hero'] = home.hero;
-const updates: HomeUi['updates'] = home.updates;
-const start: HomeUi['start'] = home.start;
-const popular: HomeUi['popular'] = home.popular;
-const explore: HomeUi['explore'] = home.explore;
-const closingCta: HomeUi['closingCta'] = home.closingCta;
+const categories = [
+  { key: 'codes', title: 'Latest Codes', description: 'Verified codes, rewards and redemption information.', icon: 'lucide:gift', note: 'We only mark codes active after verification.' },
+  { key: 'guides', title: 'Beginner Guides', description: 'New-player help, gameplay basics and practical tips.', icon: 'lucide:book-open', note: 'Begin with the getting-started guide.' },
+  { key: 'powers', title: 'Power Index', description: 'Superpower references, acquisition details and comparisons.', icon: 'lucide:zap', note: 'Individual power details are being verified.' },
+  { key: 'bosses', title: 'Boss Guides', description: 'Encounters, strategies and rewards once confirmed.', icon: 'lucide:swords', note: 'Boss-specific data is being verified.' },
+] as const;
+const gameSystems = [
+  { key: 'upgrades', title: 'Upgrades', description: 'Upgrade systems, costs and progression choices.', icon: 'lucide:arrow-up-circle' },
+  { key: 'base', title: 'Base', description: 'Base features, resource planning and useful strategies.', icon: 'lucide:house' },
+] as const;
 
-// QuickLink may be a string or { label, href } — normalize for the sidebar list.
-type QuickLink = string | { label: string; href: string };
-const trendingLinks: QuickLink[] = Array.isArray(popular.quickLinks) ? popular.quickLinks : [];
-function trendingHref(link: QuickLink): string | null {
-  return typeof link === 'string' ? null : localizePath(link.href, locale);
-}
-function trendingLabel(link: QuickLink): string {
-  return typeof link === 'string' ? link : link.label;
-}
+const loaded = await Promise.all(
+  [...categories, ...gameSystems].map(async (c) => ({
+    key: c.key,
+    entries: (await getEntriesByCategory(c.key, locale)).filter((entry) => !entry.data.noindex).slice(0, c.key === 'powers' ? 8 : 4),
+  })),
+);
+const entriesByCategory = Object.fromEntries(loaded.map((item) => [item.key, item.entries]));
+const recent = (await getRecentEntries(locale, 30))
+  .filter((entry) => !entry.data.noindex)
+  .slice(0, 4);
+const faq = home.faq?.items ?? [];
+const guidePath = detailPath('guides', 'steal-a-superpower-getting-started', locale);
 ---
 
-<LocaleLayout
-  locale={locale}
-  title={meta.title}
-  description={meta.description}
-  alternates={alternates}
-  jsonLd={jsonLd}
->
-  {/* ─────────────────────────────── Hero ─────────────────────────────── */}
-  <section class="relative flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]">
-    {/* Subtle theme-color gradient backdrop — gives the hero a visual anchor
-        without requiring an image asset. Sits behind the watermark. */}
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 bg-gradient-to-br from-nav/8 via-transparent to-transparent"
-    />
-    {/* Faint game-name watermark — pure CSS, no image asset required. */}
-    <span
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center text-[9vw] font-black leading-none text-foreground/[0.025] md:text-[7vw]"
-    >
-      {site.game.name}
-    </span>
-
-    <div class="relative mx-auto w-full max-w-7xl px-4 py-16 md:py-24">
-      <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{hero.badge}</p>
-      <h1
-        class="mt-3 max-w-3xl bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-4xl font-black tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
-      >
-        {hero.title}
-      </h1>
-      <p class="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">{hero.description}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        {
-          hero.ctaPrimary && (
-            <a
-              href={site.social.official}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary"
-            >
-              <Icon name="lucide:play" class="mr-2 h-4 w-4" />
-              {hero.ctaPrimary}
+<LocaleLayout locale={locale} title={meta.title} description={meta.description} alternates={alternates} jsonLd={jsonLd}>
+  <!-- 01: Hero. The right-hand visual uses native CSS while an approved game screenshot is sourced. -->
+  <section class="grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12 lg:py-20" aria-labelledby="home-title">
+    <div>
+      <p class="text-xs font-bold uppercase tracking-[0.18em] text-nav">{home.hero.badge}</p>
+      <h1 id="home-title" class="mt-4 max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{home.hero.description}</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href={listPath('guides', locale)} class="btn-primary inline-flex items-center gap-2">
+          <Icon name="lucide:book-open" class="h-4 w-4" /> Guides
+        </a>
+        <a href={listPath('powers', locale)} class="btn-outline inline-flex items-center gap-2">
+          <Icon name="lucide:zap" class="h-4 w-4" /> Powers
+        </a>
+      </div>
+    </div>
+    <div class="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-nav/10 via-muted/40 to-background p-5 shadow-sm sm:p-8">
+      <div aria-hidden="true" class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-nav/10 blur-3xl"></div>
+      <div class="relative">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Explore the wiki</p>
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          {[
+            { title: 'Codes', icon: 'lucide:gift', key: 'codes' },
+            { title: 'Powers', icon: 'lucide:zap', key: 'powers' },
+            { title: 'Bosses', icon: 'lucide:swords', key: 'bosses' },
+            { title: 'Guides', icon: 'lucide:book-open', key: 'guides' },
+          ].map((item) => (
+            <a href={listPath(item.key, locale)} class="group flex min-h-28 flex-col justify-between rounded-xl border border-border/70 bg-background/85 p-4 transition hover:border-nav/60 hover:shadow-md">
+              <Icon name={item.icon} class="h-7 w-7 text-nav" />
+              <span class="mt-4 flex items-center justify-between font-semibold text-foreground">
+                {item.title}<Icon name="lucide:arrow-up-right" class="h-4 w-4 text-muted-foreground transition group-hover:text-nav" />
+              </span>
             </a>
-          )
-        }
-        {
-          hero.ctaSecondary && (
-            <a href={listPath('guides', locale)} class="btn-outline">
-              {hero.ctaSecondary}
-            </a>
-          )
-        }
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  {/* Trailer — only renders when a videoId is configured. */}
-  {hero.videoId && (
-    <VideoSection videoId={hero.videoId} title={`${site.game.name} ${shared.gameTrailer}`} />
-  )}
-
-  {/* ───────────────────────────── Quick Start ────────────────────────── */}
-  <QuickStart
-    locale={locale}
-    badge={start.badge}
-    title={start.title}
-    cards={start.cards}
-  />
-
-  {/* ─────────────────── Coupon-hub live deals strip ───────────────────── */}
-  {
-    couponDeals && couponDeals.merchants.length > 0 && (
-      <section class="section border-t border-border">
-        <div class="flex items-baseline justify-between">
-          <h2 class="text-2xl font-bold">{couponDeals.title}</h2>
-          <a href={listPath('codes', locale)} class="text-sm text-foreground hover:text-nav hover:underline">
-            {shared.browseAll}
+  <!-- 02-05: Content-first category modules; never fabricate code lists or game stats. -->
+  {categories.map((section, i) => {
+    const entries = entriesByCategory[section.key] ?? [];
+    return (
+      <section class="border-t border-border py-10 sm:py-12" aria-labelledby={`section-${section.key}`}>
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div class="flex max-w-2xl items-start gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-nav/10 text-nav">
+              <Icon name={section.icon} class="h-6 w-6" />
+            </span>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">0{i + 2} / Explore</p>
+              <h2 id={`section-${section.key}`} class="mt-1 text-2xl font-extrabold tracking-tight sm:text-3xl">{section.title}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{section.description}</p>
+            </div>
+          </div>
+          <a href={listPath(section.key, locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">
+            Browse all <Icon name="lucide:arrow-right" class="h-4 w-4" />
           </a>
         </div>
-        <div class="mt-4">
-          <DealsOverview
-            merchants={couponDeals.merchants}
-            perMerchantLimit={2}
-            labels={shared.codesTable ?? {}}
-            copiedText={shared.copied}
-          />
-        </div>
-      </section>
-    )
-  }
-
-  {/* ───────────────────── Recent Updates + Trending ───────────────────── */}
-  <section class="section border-t border-border">
-    <div class="grid gap-8 lg:grid-cols-3">
-      {/* Recent updates — 2/3 width on desktop. */}
-      <div class="lg:col-span-2">
-        <div class="flex items-baseline justify-between">
-          <h2 class="text-2xl font-bold">{updates.title}</h2>
-          <a href={listPath('guides', locale)} class="text-sm text-foreground hover:text-nav hover:underline"
-            >{shared.browseAll}</a
-          >
-        </div>
-        <div class="mt-4 grid gap-4 sm:grid-cols-2">
-          {
-            recent.length === 0 ? (
-              <p class="text-sm text-muted-foreground">{shared.noArticles}</p>
-            ) : (
-              recent.map((entry) => {
-                const parsed = parseEntryId(entry.id);
-                if (!parsed) return null;
-                return (
-                  <a href={detailPath(parsed.category, parsed.slug, locale)} class="card p-4">
-                    <p class="text-xs uppercase tracking-wider text-muted-foreground">
-                      {parsed.category}
-                    </p>
-                    <h3 class="mt-1 font-semibold leading-snug">{entry.data.title}</h3>
-                    <p class="mt-1 line-clamp-2 text-sm text-muted-foreground">
-                      {entry.data.description}
-                    </p>
-                  </a>
-                );
-              })
-            )
-          }
-        </div>
-      </div>
-
-      {/* Trending — 1/3 width sidebar list. */}
-      {trendingLinks.length > 0 && (
-        <aside>
-          <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{popular.badge}</p>
-          <h2 class="mt-1 text-2xl font-bold">{popular.title}</h2>
-          <ul class="mt-4 space-y-2">
-            {trendingLinks.map((link: QuickLink) => {
-              const href = trendingHref(link);
-              const label = trendingLabel(link);
+        {entries.length > 0 ? (
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {entries.map((entry) => {
+              const parsed = parseEntryId(entry.id);
+              if (!parsed) return null;
               return (
-                <li>
-                  {href ? (
-                    <a
-                      href={href}
-                      class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium transition hover:border-nav/50"
-                    >
-                      <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
-                      <span class="leading-snug">{label}</span>
-                    </a>
-                  ) : (
-                    <div class="flex items-center gap-2 rounded-md border bg-card p-3 text-sm font-medium">
-                      <Icon name="lucide:trending-up" class="h-4 w-4 shrink-0 text-nav" />
-                      <span class="leading-snug">{label}</span>
-                    </div>
-                  )}
-                </li>
+                <a href={detailPath(parsed.category, parsed.slug, locale)} class="card group flex flex-col p-5 transition hover:border-nav/50">
+                  <p class="text-xs font-medium uppercase tracking-wide text-nav">{section.key}</p>
+                  <h3 class="mt-2 font-bold leading-snug group-hover:text-nav">{entry.data.title}</h3>
+                  <p class="mt-2 line-clamp-3 text-sm text-muted-foreground">{entry.data.description}</p>
+                  <span class="mt-auto inline-flex items-center gap-1 pt-5 text-xs font-semibold">Read guide <Icon name="lucide:arrow-right" class="h-3 w-3" /></span>
+                </a>
               );
             })}
-          </ul>
-        </aside>
-      )}
+          </div>
+        ) : (
+          <div class="mt-6 flex flex-col justify-between gap-4 rounded-xl border border-border bg-card p-5 sm:flex-row sm:items-center sm:p-6">
+            <p class="max-w-2xl text-sm text-muted-foreground">{section.note}</p>
+            <a href={section.key === 'guides' ? guidePath : listPath(section.key, locale)} class="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-nav hover:underline">
+              {section.key === 'guides' ? 'Getting started' : `Explore ${section.title}`}
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </div>
+        )}
+      </section>
+    );
+  })}
+
+  <!-- 06: Upgrades and base -->
+  <section class="border-t border-border py-10 sm:py-12" aria-labelledby="game-systems-title">
+    <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">06 / Game systems</p>
+    <h2 id="game-systems-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Upgrades &amp; Base</h2>
+    <p class="mt-2 text-sm text-muted-foreground">Find practical systems guides as confirmed information becomes available.</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      {gameSystems.map((system) => (
+        <a href={listPath(system.key, locale)} class="card group p-6 transition hover:border-nav/50">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-nav/10 text-nav"><Icon name={system.icon} class="h-6 w-6" /></span>
+            <h3 class="text-lg font-bold group-hover:text-nav">{system.title}</h3>
+            <Icon name="lucide:arrow-up-right" class="ml-auto h-5 w-5 text-muted-foreground" />
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-muted-foreground">{system.description}</p>
+          {(entriesByCategory[system.key] ?? []).length === 0 && <p class="mt-3 text-xs text-muted-foreground">Detailed information is being verified.</p>}
+        </a>
+      ))}
     </div>
   </section>
 
-  {/* ──────────────────────────── Explore Modules ─────────────────────── */}
-  {
-    explore.modules?.length > 0 && (
-      <section class="section border-t border-border">
-        <h2 class="text-2xl font-bold">{explore.title}</h2>
-        <p class="mt-1 text-sm text-muted-foreground">{explore.description}</p>
-        <div class="mt-8">
-          <ExploreModules modules={explore.modules} locale={locale} />
-        </div>
-      </section>
-    )
-  }
-
-  {/* ─────────────────────────────── Final CTA ────────────────────────── */}
-  {
-    closingCta.title && closingCta.primary && (
-      <section class="section border-t border-border">
-        <div class="rounded-xl border bg-card p-8 text-center md:p-12">
-          <h2 class="text-2xl font-bold md:text-3xl">{closingCta.title}</h2>
-          <p class="mx-auto mt-2 max-w-xl text-muted-foreground">{closingCta.description}</p>
-          <div class="mt-6 flex justify-center gap-3">
-            <a
-              href={site.social.official}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-primary"
-            >
-              {closingCta.primary}
+  <!-- 07: Separate site articles from game patch notes -->
+  <section class="border-t border-border py-10 sm:py-12" aria-labelledby="updates-title">
+    <div class="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">07 / What's new</p>
+        <h2 id="updates-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Latest Wiki Updates</h2>
+        <p class="mt-2 text-sm text-muted-foreground">Recently published guides and reference articles. For confirmed game changes, visit Updates.</p>
+      </div>
+      <a href={listPath('updates', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Game updates <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+    </div>
+    {recent.length > 0 ? (
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {recent.map((entry) => {
+          const parsed = parseEntryId(entry.id);
+          if (!parsed) return null;
+          return (
+            <a class="card group p-5 transition hover:border-nav/50" href={detailPath(parsed.category, parsed.slug, locale)}>
+              <p class="text-xs font-medium uppercase tracking-wide text-nav">{parsed.category}</p>
+              <h3 class="mt-2 font-semibold group-hover:text-nav">{entry.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-muted-foreground">{entry.data.description}</p>
             </a>
-            {closingCta.secondary && site.social.discord && (
-              <a
-                href={site.social.discord}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-outline"
-              >
-                {closingCta.secondary}
-              </a>
-            )}
-          </div>
-        </div>
-      </section>
-    )
-  }
+          );
+        })}
+      </div>
+    ) : <p class="mt-6 rounded-xl border border-border bg-card p-6 text-sm text-muted-foreground">More verified articles will appear here as they are published.</p>}
+  </section>
+
+  <!-- 08: Visible, accessible native-HTML FAQ -->
+  {faq.length > 0 && (
+    <section class="border-t border-border py-10 sm:py-12" aria-labelledby="faq-title">
+      <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">08 / Help</p>
+      <h2 id="faq-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">{home.faq.title}</h2>
+      <p class="mt-2 text-sm text-muted-foreground">{home.faq.description}</p>
+      <div class="mt-6 grid gap-3">
+        {faq.slice(0, 6).map((item) => (
+          <details class="group rounded-xl border border-border bg-card p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold">
+              {item.question}<Icon name="lucide:chevron-down" class="h-4 w-4 shrink-0 text-muted-foreground transition group-open:rotate-180" />
+            </summary>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
 </LocaleLayout>
