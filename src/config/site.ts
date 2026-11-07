@@ -70,36 +70,36 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'Anvil Quest Wiki',
-  shortName: 'AQ Wiki',
+
+  name: 'Steal a Superpower Wiki',
+  shortName: 'Superpower Wiki',
   description:
-    'Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Every guide carries a last-verified date.',
-  domain: 'anvil.wiki',
-  tagline: 'Your forge for everything Anvil Quest',
+    'Independent Steal a Superpower game wiki with beginner guides, superpower information, codes, tips, and strategies for Roblox players.',
+  domain: 'anvilwiki-9x8.pages.dev',
+  tagline: 'Your Ultimate Steal a Superpower Guide',
   legalNotice:
-    'Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
+    'Steal a Superpower Wiki is an independent fan-made website. It is not affiliated with or endorsed by Roblox or the game developers.',
+
   // 👉 APPLY TEMPLATE: set a real address if you run no social channels —
   // the contact page renders it as a mailto link.
   contactEmail: '',
+ 
   social: {
-    official: 'https://example.com/anvil-quest',
-    discord: 'https://discord.gg/example',
-    youtube: 'https://youtube.com/@example',
-    twitter: 'https://twitter.com/example',
-    reddit: 'https://reddit.com/r/anvilquest',
+    official: '',
   },
+
+  
+  
   // 👉 APPLY TEMPLATE: point these at the game's real canonical pages.
-  sameAs: [
-    'https://example.com/anvil-quest',
-    'https://en.wikipedia.org/wiki/Anvil_Quest',
-  ],
-  game: {
-    name: 'Anvil Quest',
-    platform: 'Roblox',
-    developer: 'Forge Studios',
-    genre: 'Fantasy RPG',
-    releaseDate: '2026-01-15',
-  },
+  sameAs: [],
+ 
+game: {
+  name: 'Steal a Superpower',
+  platform: 'Roblox',
+  developer: '11 R$ Productions',
+  genre: 'Superpower Collection / Tycoon',
+},
+
   // hero.webp is 1200×630 (the recommended OG share aspect ratio).
   ogImageWidth: 1200,
   ogImageHeight: 630,
