@@ -11,14 +11,17 @@
     "home": "Home",
     "bosses": "Bosses",
     "guides": "Guides",
-    "items": "Items",
     "codes": "Codes",
     "recipes": "Recipes",
     "toggleTheme": "Toggle theme",
     "menu": "Menu",
     "close": "Close",
     "search": "Search",
-    "language": "Language"
+    "language": "Language",
+    "powers": "Powers",
+    "upgrades": "Upgrades",
+    "base": "Base",
+    "updates": "Updates"
   },
   "search": {
     "placeholder": "Search the wiki...",
@@ -138,21 +141,33 @@
     "paginationAria": "Article pagination"
   },
   "overview": {
+    "codes": {
+      "overviewTitle": "Steal a Superpower Codes",
+      "overviewDescription": "Verified Steal a Superpower Roblox code information, redemption guidance, and code-status updates."
+    },
+    "powers": {
+      "overviewTitle": "Superpowers",
+      "overviewDescription": "Browse the Steal a Superpower power reference, with verified effects, availability and comparisons as information is confirmed."
+    },
     "bosses": {
-      "overviewTitle": "All Bosses",
-      "overviewDescription": "Browse Steal a Superpower boss information as verified guides become available."
+      "overviewTitle": "Bosses",
+      "overviewDescription": "Learn about Steal a Superpower bosses and encounters as their locations, rewards and mechanics are verified."
     },
     "guides": {
-      "overviewTitle": "All Guides",
-      "overviewDescription": "Find beginner tips, gameplay information and strategies for Steal a Superpower."
+      "overviewTitle": "Game Guides",
+      "overviewDescription": "Beginner help, explanations and practical strategy articles for Steal a Superpower on Roblox."
     },
-    "items": {
-      "overviewTitle": "All Items",
-      "overviewDescription": "Browse reference information about items and superpowers as details are verified."
+    "upgrades": {
+      "overviewTitle": "Upgrades",
+      "overviewDescription": "Understand Steal a Superpower upgrade systems, costs and priorities as details are independently verified."
     },
-    "codes": {
-      "overviewTitle": "All Codes",
-      "overviewDescription": "Find Steal a Superpower code information; only verified codes will be labeled active."
+    "base": {
+      "overviewTitle": "Base Guide",
+      "overviewDescription": "Explore base-related features and strategies for Steal a Superpower as information is confirmed."
+    },
+    "updates": {
+      "overviewTitle": "Game Updates",
+      "overviewDescription": "Track confirmed Steal a Superpower game changes, announcements and new features."
     },
     "recipes": {
       "overviewTitle": "All Recipes",
@@ -195,17 +210,17 @@
         },
         {
           "number": "3",
-          "title": "Superpower Guides",
+          "title": "Powers",
           "description": "Explore superpowers and strategies as verified guides are published.",
-          "icon": "lucide:swords",
-          "href": "/guides"
+          "icon": "lucide:zap",
+          "href": "/powers"
         },
         {
           "number": "4",
-          "title": "Superpower Tier List",
-          "description": "Browse available comparisons and guides about different superpowers.",
-          "icon": "lucide:list-ordered",
-          "href": "/guides"
+          "title": "Bosses",
+          "description": "Find boss information and encounter guidance as details are verified.",
+          "icon": "lucide:swords",
+          "href": "/bosses"
         }
       ]
     },
@@ -218,16 +233,16 @@
           "href": "/guides"
         },
         {
-          "label": "Superpower Guides",
-          "href": "/guides"
+          "label": "Superpowers",
+          "href": "/powers"
         },
         {
-          "label": "All Codes",
+          "label": "Codes",
           "href": "/codes"
         },
         {
-          "label": "Items",
-          "href": "/items"
+          "label": "Latest Updates",
+          "href": "/updates"
         }
       ]
     },
@@ -253,7 +268,7 @@
           "order": 2,
           "name": "Superpower Guides",
           "description": "Learn about superpowers as reliable details are documented.",
-          "href": "/guides",
+          "href": "/powers",
           "displayType": "labeled-cards",
           "highlights": [
             {
@@ -289,18 +304,18 @@
         },
         {
           "order": 4,
-          "name": "Items & Resources",
-          "description": "Reference information about available items.",
-          "href": "/items",
+          "name": "Upgrades & Base",
+          "description": "Explore upgrade and base references as reliable details become available.",
+          "href": "/upgrades",
           "displayType": "ranked-grid",
           "highlights": [
             {
-              "label": "Guide",
-              "detail": "Item information"
+              "label": "Upgrades",
+              "detail": "Verified upgrade details"
             },
             {
-              "label": "Tips",
-              "detail": "Useful resources"
+              "label": "Base",
+              "detail": "Base reference guides"
             }
           ]
         }
