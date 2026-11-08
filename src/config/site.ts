@@ -75,7 +75,7 @@ export const site: SiteConfig = {
   shortName: 'Superpower Wiki',
   description:
     'Independent Steal a Superpower game wiki with beginner guides, superpower information, codes, tips, and strategies for Roblox players.',
-  domain: 'anvilwiki-9x8.pages.dev',
+  domain: 'stealasuperpowerwiki.com',
   tagline: 'Your Ultimate Steal a Superpower Guide',
   legalNotice:
     'Steal a Superpower Wiki is an independent fan-made website. It is not affiliated with or endorsed by Roblox or the game developers.',

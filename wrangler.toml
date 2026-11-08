@@ -35,7 +35,7 @@ pages_build_output_dir = "dist"
 
 [vars]
 # Site (must include https:// protocol — Astro validates this as a URL)
-SITE_URL = "https://anvilwiki-9x8.pages.dev"
+SITE_URL = "https://stealasuperpowerwiki.com"
 # Legacy IndexNow override for the anvil.wiki demo deployment.
 # New forks generate and commit .indexnow-key during initialization.
 
