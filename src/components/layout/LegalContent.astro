@@ -17,35 +17,28 @@ const year = new Date().getFullYear();
   page === 'about' && (
     <>
       <p>
-        {site.name} is a fan-made community wiki dedicated to {game}, a {site.game.genre} on{' '}
-        {site.game.platform} developed by {site.game.developer}. Our mission is to provide accurate,
-        up-to-date guides, tips, and reference material to help players get the most out of the
-        game.
+        {site.name} is an independent, fan-made resource for players of {game} on {site.game.platform}.
+        It brings together beginner guides, superpower references, boss information, codes,
+        upgrades, base-related topics, and game updates.
       </p>
-      <h2>What We Cover</h2>
+      <h2>What You Can Find Here</h2>
       <ul>
-        <li>Boss strategies and attack patterns</li>
-        <li>Item locations, stats, and crafting recipes</li>
-        <li>Active redeemable codes (updated daily)</li>
-        <li>Tier lists and build recommendations</li>
-        <li>Progression guides for new and returning players</li>
+        <li>Getting-started guides and gameplay explanations</li>
+        <li>Information about powers and bosses as details are verified</li>
+        <li>Code status and redemption information when confirmed</li>
+        <li>References for upgrades, bases, and game progression</li>
+        <li>Confirmed updates and changes to the game</li>
       </ul>
-      <h2>Community-Driven</h2>
+      <h2>Independent and Accuracy-Focused</h2>
       <p>
-        This wiki is maintained by volunteers. If you spot an error or have content to contribute,
-        join our Discord and let us know. All content is freely accessible — no account required.
+        This website is not an official Roblox or developer site. Content is added and corrected
+        as reliable information becomes available. Unverified codes, rewards, or gameplay values
+        are not presented as confirmed facts.
       </p>
-      <h2>Contact</h2>
+      <h2>Corrections and Contributions</h2>
       <p>
-        Reach us via our{' '}
-        <a href={site.social.discord} target="_blank" rel="noopener noreferrer">
-          Discord server
-        </a>{' '}
-        or{' '}
-        <a href={site.social.official} target="_blank" rel="noopener noreferrer">
-          the game's official channels
-        </a>
-        .
+        If you spot outdated information or would like to help improve a guide, visit our{' '}
+        <a href="/contact/">Contact page</a>.
       </p>
     </>
   )
@@ -171,12 +164,9 @@ const year = new Date().getFullYear();
       </p>
       <h2>DMCA / Takedown</h2>
       <p>
-        If you believe any content on this site infringes your copyright, please contact us via our{' '}
-        <a href={site.social.discord} target="_blank" rel="noopener noreferrer">
-          Discord server
-        </a>{' '}
-        with a detailed description of the allegedly infringing material. We will review and respond
-        to valid requests promptly.
+        If you believe any content on this site infringes your copyright, please visit our{' '}
+        <a href="/contact/">Contact page</a> for the available contact channels,
+        with a detailed description of the allegedly infringing material.
       </p>
       <h2>Fan-Made Notice</h2>
       <p>{site.legalNotice}</p>
