@@ -52,13 +52,7 @@ const faq = home.faq?.items ?? [];
   <section class="flow-root py-8 sm:py-12 lg:py-16" aria-labelledby="home-title">
     <!-- Desktop: the image floats right so heading and body text naturally wrap beside it.
          Below the image, text returns to the full content width. -->
-    <div class="relative hidden aspect-video w-1/2 items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 p-6 md:float-right md:mb-4 md:ml-6 md:flex" aria-label="Game screenshot placeholder">
-      <div class="flex flex-col items-center gap-3 text-center text-muted-foreground">
-        <Icon name="lucide:image" class="h-12 w-12 opacity-60" />
-        <p class="text-sm font-semibold">Game screenshot coming soon</p>
-        <p class="max-w-xs text-xs">A verified in-game image will appear here.</p>
-      </div>
-    </div>
+    <img src="https://tr.rbxcdn.com/180DAY-0219f54aa0ffa176746c1101d68ea155/500/280/Image/Jpeg/noFilter" alt="Official Steal a Superpower Roblox promotional artwork featuring a glowing superpower card" width="500" height="280" fetchpriority="high" decoding="async" class="hidden aspect-video w-1/2 rounded-2xl border border-border object-cover shadow-sm md:float-right md:mb-4 md:ml-6 md:block" />
 
     <p class="text-xs font-bold uppercase tracking-[0.18em] text-nav">{home.hero.badge}</p>
     <h1 id="home-title" class="mt-4 tracking-tight text-foreground">
@@ -67,12 +61,7 @@ const faq = home.faq?.items ?? [];
     </h1>
 
     <!-- Mobile: title first, then full-width image, then readable text. -->
-    <div class="mt-6 flex aspect-video w-full items-center justify-center rounded-2xl border border-dashed border-border bg-muted/40 p-6 md:hidden" aria-label="Game screenshot placeholder">
-      <div class="flex flex-col items-center gap-2 text-center text-muted-foreground">
-        <Icon name="lucide:image" class="h-9 w-9 opacity-60" />
-        <p class="text-sm font-semibold">Game screenshot coming soon</p>
-      </div>
-    </div>
+    <img src="https://tr.rbxcdn.com/180DAY-0219f54aa0ffa176746c1101d68ea155/500/280/Image/Jpeg/noFilter" alt="Official Steal a Superpower Roblox promotional artwork featuring a glowing superpower card" width="500" height="280" decoding="async" class="mt-6 aspect-video w-full rounded-2xl border border-border object-cover shadow-sm md:hidden" />
 
     <div class="mt-5 space-y-3 text-sm leading-7 text-muted-foreground sm:text-base">
       <p><strong class="font-semibold text-foreground">Steal a Superpower</strong> is a Roblox game centered on collecting superpowers and progressing through challenges. Players explore different powers, develop their abilities, and learn how the game's bosses, upgrades, and base systems work together.</p>
