@@ -1,20 +1,26 @@
 ---
 /**
- * Official announcement codes only. The announcement source proves publication,
- * not present redeemability. Dates with ~ are estimates from relative timestamps.
+ * Unified code reference table: developer-announced codes first, independently
+ * unverified third-party reports below. Never imply live redemption was tested.
  */
 const officialSource = 'https://www.roblox.com/communities/603354433/11-R-Productions';
+const thirdPartySource = 'https://progameguides.com/roblox/steal-a-superpower-codes/';
 const codes = [
-  { code: '50KLIKES', reward: 'Tier 3 potions: 3× Luck, Power, Damage and Health', announced: '~ Nov 6, 2026', dateNote: 'Estimated from the “2d” label seen on November 8, 2026', estimated: true },
-  { code: '30KLIKES', reward: 'Luck Potion III: 3× Luck for 15 minutes', announced: 'Nov 5, 2026', dateNote: 'Exact timestamp shown: 2026-11-05 11:45:42 (timezone unknown)', estimated: false },
-  { code: '20KLIKES', reward: '3× Luck for 15 minutes', announced: '~ Nov 4, 2026', dateNote: 'Estimated from the “4d” label seen on November 8, 2026', estimated: true },
-  { code: 'POTIONS', reward: 'Luck Potion II effect', announced: '~ Nov 2, 2026', dateNote: 'Estimated from the “6d” label seen on November 8, 2026', estimated: true },
-  { code: 'GROUP', reward: 'Champion Pack', announced: 'Early Nov 2026', dateNote: 'Approximate: the post showed “1w”, not an exact date', estimated: true },
+  { code: '50KLIKES', reward: 'Tier 3 potions: 3× Luck, Power, Damage and Health', announced: '~ Nov 6, 2026', dateNote: 'Estimated from the “2d” label seen on November 8, 2026', estimated: true, official: true },
+  { code: '30KLIKES', reward: 'Luck Potion III: 3× Luck for 15 minutes', announced: 'Nov 5, 2026', dateNote: 'Exact timestamp shown: 2026-11-05 11:45:42 (timezone unknown)', estimated: false, official: true },
+  { code: '20KLIKES', reward: '3× Luck for 15 minutes', announced: '~ Nov 4, 2026', dateNote: 'Estimated from the “4d” label seen on November 8, 2026', estimated: true, official: true },
+  { code: 'POTIONS', reward: 'Luck Potion II effect', announced: '~ Nov 2, 2026', dateNote: 'Estimated from the “6d” label seen on November 8, 2026', estimated: true, official: true },
+  { code: 'GROUP', reward: 'Champion Pack', announced: 'Early Nov 2026', dateNote: 'Approximate: the post showed “1w”, not an exact date', estimated: true, official: true },
+  { code: '10KCCU', reward: 'Mystery Pack (reported)', announced: 'Unknown', dateNote: 'Official announcement date not verified', estimated: false, official: false },
+  { code: 'SOZFORUPDATES', reward: 'Power Potion III (reported)', announced: 'Unknown', dateNote: 'Official announcement date not verified', estimated: false, official: false },
+  { code: '10KLIKES', reward: 'Power Potion III (reported)', announced: 'Unknown', dateNote: 'Official announcement date not verified', estimated: false, official: false },
+  { code: '1KCCU', reward: 'Power Potion II (reported)', announced: 'Unknown', dateNote: 'Official announcement date not verified', estimated: false, official: false },
+  { code: 'DISCORD', reward: 'Legend Pack (reported)', announced: 'Unknown', dateNote: 'Official announcement date not verified', estimated: false, official: false },
 ];
 ---
 <section class="not-prose my-7" aria-labelledby="official-codes-heading">
   <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
-    <h2 id="official-codes-heading" class="text-xl font-extrabold tracking-tight sm:text-2xl">Officially Announced Codes</h2>
+    <h2 id="official-codes-heading" class="text-xl font-extrabold tracking-tight sm:text-2xl">Steal a Superpower Codes</h2>
     <span class="text-xs text-muted-foreground">Source reviewed Nov 8, 2026</span>
   </div>
   <div class="overflow-x-auto rounded-xl border border-border bg-card">
@@ -41,13 +47,13 @@ const codes = [
             </td>
             <td class="px-3 py-3 align-middle text-foreground sm:px-4">{item.reward}</td>
             <td class="px-3 py-3 align-middle text-muted-foreground sm:px-4"><span title={item.dateNote} class="whitespace-nowrap">{item.announced}</span></td>
-            <td class="px-3 py-3 align-middle sm:px-4"><a href={officialSource} target="_blank" rel="noopener noreferrer" title="Official Roblox community announcements by Biosung" class="font-semibold text-nav underline-offset-4 hover:underline">Official ↗</a></td>
+            <td class="px-3 py-3 align-middle sm:px-4"><a href={item.official ? officialSource : thirdPartySource} target="_blank" rel="noopener noreferrer" title={item.official ? "Developer announcement in the Roblox community" : "Third-party code report; official source not verified"} class={item.official ? "font-semibold text-nav underline-offset-4 hover:underline" : "font-medium text-muted-foreground underline-offset-4 hover:underline"}>{item.official ? "Official ↗" : "Third-party ↗"}</a></td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  <p class="mt-3 text-xs leading-relaxed text-muted-foreground"><strong>~ = estimated announcement date.</strong> Dates without ~ are backed by a visible timestamp. “Official” confirms the developer published the code, not that it still redeems. <span id="codes-copy-feedback" class="sr-only" role="status" aria-live="polite"></span></p>
+  <p class="mt-3 text-xs leading-relaxed text-muted-foreground"><strong>~ = estimated announcement date.</strong> Dates without ~ are backed by a visible timestamp. “Official” means confirmed in a developer announcement; “Third-party” means not officially verified by this wiki. Neither label guarantees the code still redeems. <span id="codes-copy-feedback" class="sr-only" role="status" aria-live="polite"></span></p>
 </section>
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-copy-code]').forEach((button) => {
