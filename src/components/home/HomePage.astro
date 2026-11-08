@@ -48,56 +48,45 @@ const faq = home.faq?.items ?? [];
 ---
 
 <LocaleLayout locale={locale} title={meta.title} description={meta.description} alternates={alternates} jsonLd={jsonLd}>
-  <!-- 01: Hero — natural text flow around a right-floated, half-width game image. -->
-  <section class="flow-root py-8 sm:py-12 lg:py-16" aria-labelledby="home-title">
-    <!-- Desktop: the image floats right so heading and body text naturally wrap beside it.
-         Below the image, text returns to the full content width. -->
-    <div class="hidden w-1/2 md:float-right md:mb-4 md:ml-6 md:block">
-      <a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" aria-label="Play Steal a Superpower on Roblox (opens in a new tab)" title="Play Steal a Superpower on Roblox" class="group block aspect-video w-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav">
-        <img src="/images/steal-superpower-original-hero.webp" alt="Original fan-made Steal a Superpower Wiki banner featuring stylized fire, ice, and lightning powers" width="800" height="450" fetchpriority="high" decoding="async" class="aspect-video w-full rounded-2xl border border-border object-cover shadow-sm transition group-hover:shadow-lg group-hover:brightness-110" />
-      </a>
+  <!-- 01: Hero — two columns keep the action group together beneath the left-side text.
+       On desktop, the bottom of the actions aligns with the bottom of the right-side image. -->
+  <section class="py-8 sm:py-12 lg:py-16" aria-labelledby="home-title">
+    <div class="grid items-stretch gap-6 md:grid-cols-2 md:gap-6">
+      <div class="flex min-w-0 flex-col">
+        <h1 id="home-title" class="max-w-full text-balance text-xl font-bold leading-snug tracking-tight text-foreground sm:text-2xl">
+          Steal a Superpower Wiki: Codes, Powers &amp; Guides
+        </h1>
 
-    </div>
+        <div class="mt-5 space-y-3 text-sm leading-7 text-black sm:text-base">
+          <p>Steal a Superpower Wiki serves as a comprehensive guide for the game, covering gift codes, in-depth analyses of superpowers, beginner tutorials, boss strategies, leveling tips, and the latest game updates.</p>
+          <p>Created by players for players, this wiki is your one-stop resource for all essential game information. Here, you can explore detailed data on superpowers, consult beginner guides and boss-defeat strategies, redeem the latest gift codes, and find practical advice on character progression and base development.</p>
+        </div>
 
-    <h1 id="home-title" class="max-w-full text-balance text-xl font-bold leading-snug tracking-tight text-foreground sm:text-2xl">
-      Steal a Superpower Wiki: Codes, Powers &amp; Guides
-    </h1>
+        <div class="mt-auto flex flex-wrap items-center gap-3 pt-6">
+          <a href={listPath('guides', locale)} class="btn-primary inline-flex items-center gap-2">
+            <Icon name="lucide:book-open" class="h-4 w-4" /> Guides
+          </a>
+          <a href={listPath('powers', locale)} class="btn-outline inline-flex items-center gap-2">
+            <Icon name="lucide:zap" class="h-4 w-4" /> Powers
+          </a>
+          <a href={listPath('codes', locale)} class="btn-outline inline-flex items-center gap-2">
+            <Icon name="lucide:gift" class="h-4 w-4" /> Codes
+          </a>
+          <a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" aria-label="Play Steal a Superpower on Roblox (opens in a new tab)" class="btn-primary inline-flex items-center gap-2">
+            <Icon name="lucide:gamepad-2" class="h-4 w-4" /> Play Game <Icon name="lucide:external-link" class="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </div>
 
-    <!-- Mobile: title first, then full-width image, then readable text. -->
-    <div class="mt-6 md:hidden">
-      <a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" aria-label="Play Steal a Superpower on Roblox (opens in a new tab)" title="Play Steal a Superpower on Roblox" class="group block aspect-video w-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav">
-        <img src="/images/steal-superpower-original-hero.webp" alt="Original fan-made Steal a Superpower Wiki banner featuring stylized fire, ice, and lightning powers" width="800" height="450" decoding="async" class="aspect-video w-full rounded-2xl border border-border object-cover shadow-sm transition group-hover:brightness-110" />
-      </a>
-      <div class="mt-3 flex justify-center">
-        <a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" aria-label="Play Steal a Superpower on Roblox (opens in a new tab)" class="btn-primary inline-flex items-center gap-2">
-          <Icon name="lucide:gamepad-2" class="h-4 w-4" /> Play Game <Icon name="lucide:external-link" class="h-3.5 w-3.5" />
+      <div class="flex min-w-0 items-end">
+        <a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" aria-label="Play Steal a Superpower on Roblox (opens in a new tab)" title="Play Steal a Superpower on Roblox" class="group block aspect-video w-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-nav">
+          <img src="/images/steal-superpower-original-hero.webp" alt="Original fan-made Steal a Superpower Wiki banner featuring stylized fire, ice, and lightning powers" width="800" height="450" fetchpriority="high" decoding="async" class="aspect-video w-full rounded-2xl border border-border object-cover shadow-sm transition group-hover:shadow-lg group-hover:brightness-110" />
         </a>
       </div>
-    </div>
-
-    <div class="mt-5 space-y-3 text-sm leading-7 text-black sm:text-base">
-      <p>Steal a Superpower Wiki serves as a comprehensive guide for the game, covering gift codes, in-depth analyses of superpowers, beginner tutorials, boss strategies, leveling tips, and the latest game updates.</p>
-      <p>Created by players for players, this wiki is your one-stop resource for all essential game information. Here, you can explore detailed data on superpowers, consult beginner guides and boss-defeat strategies, redeem the latest gift codes, and find practical advice on character progression and base development.</p>
-    </div>
-
-    <!-- All four actions share one row on desktop; Play Game is centered under the right-hand image. -->
-    <div class="clear-both grid items-center gap-3 pt-7 md:grid-cols-2 md:gap-x-6">
-      <div class="flex flex-wrap items-center gap-3">
-        <a href={listPath('guides', locale)} class="btn-primary inline-flex items-center gap-2">
-          <Icon name="lucide:book-open" class="h-4 w-4" /> Guides
-        </a>
-        <a href={listPath('powers', locale)} class="btn-outline inline-flex items-center gap-2">
-          <Icon name="lucide:zap" class="h-4 w-4" /> Powers
-        </a>
-        <a href={listPath('codes', locale)} class="btn-outline inline-flex items-center gap-2">
-          <Icon name="lucide:gift" class="h-4 w-4" /> Codes
-        </a>
-      </div>
-      <div class="flex justify-center"><a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" aria-label="Play Steal a Superpower on Roblox (opens in a new tab)" class="btn-primary inline-flex items-center gap-2"><Icon name="lucide:gamepad-2" class="h-4 w-4" /> Play Game <Icon name="lucide:external-link" class="h-3.5 w-3.5" /></a></div>
     </div>
   </section>
 
-  <!-- 02-05: Compact 2×2 category overview, as approved in the homepage wireframe. -->
+    <!-- 02-05: Compact 2×2 category overview, as approved in the homepage wireframe. -->
   <section class="border-t border-border py-9 sm:py-12" aria-label="Main wiki categories">
     <div class="grid gap-4 md:grid-cols-2">
       {categories.map((section, i) => {
