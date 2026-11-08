@@ -46,13 +46,13 @@ const codes = [
             </td>
             <td class="px-3 py-3 align-middle text-foreground sm:px-4">{item.reward}</td>
             <td class="px-3 py-3 align-middle text-muted-foreground sm:px-4"><span title={item.dateNote} class="whitespace-nowrap">{item.announced}</span></td>
-            <td class="px-3 py-3 align-middle sm:px-4">{item.official ? <a href={officialSource} target="_blank" rel="noopener noreferrer" title="Developer announcement in the Roblox community" class="font-semibold text-nav underline-offset-4 hover:underline">Official ↗</a> : <span class="font-medium text-muted-foreground" title="No official announcement verified">Third-party</span>}</td>
+            <td class="px-3 py-3 align-middle sm:px-4">{item.official ? <a href={officialSource} target="_blank" rel="noopener noreferrer" title="Developer announcement in the Roblox community" class="font-semibold text-nav underline-offset-4 hover:underline">Official ↗</a> : <span class="font-medium text-muted-foreground" title="Not confirmed by a developer announcement">Unverified</span>}</td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
-  <p class="mt-3 text-xs leading-relaxed text-muted-foreground"><strong>~ = estimated announcement date.</strong> Dates without ~ are backed by a visible timestamp. “Official” means confirmed in a developer announcement; “Third-party” means not officially verified by this wiki. Neither label guarantees the code still redeems. <span id="codes-copy-feedback" class="sr-only" role="status" aria-live="polite"></span></p>
+  <p class="mt-3 text-xs leading-relaxed text-muted-foreground"><strong>~ = estimated announcement date.</strong> Dates without ~ are backed by a visible timestamp. “Official” = confirmed by a developer announcement. “Unverified” = not yet confirmed by an official source. Neither label guarantees that the code currently works. <span id="codes-copy-feedback" class="sr-only" role="status" aria-live="polite"></span></p>
 </section>
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-copy-code]').forEach((button) => {
