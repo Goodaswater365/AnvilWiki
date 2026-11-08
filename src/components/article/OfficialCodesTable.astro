@@ -4,7 +4,6 @@
  * unverified third-party reports below. Never imply live redemption was tested.
  */
 const officialSource = 'https://www.roblox.com/communities/603354433/11-R-Productions';
-const thirdPartySource = 'https://progameguides.com/roblox/steal-a-superpower-codes/';
 const codes = [
   { code: '50KLIKES', reward: 'Tier 3 potions: 3× Luck, Power, Damage and Health', announced: '~ Nov 6, 2026', dateNote: 'Estimated from the “2d” label seen on November 8, 2026', estimated: true, official: true },
   { code: '30KLIKES', reward: 'Luck Potion III: 3× Luck for 15 minutes', announced: 'Nov 5, 2026', dateNote: 'Exact timestamp shown: 2026-11-05 11:45:42 (timezone unknown)', estimated: false, official: true },
@@ -47,7 +46,7 @@ const codes = [
             </td>
             <td class="px-3 py-3 align-middle text-foreground sm:px-4">{item.reward}</td>
             <td class="px-3 py-3 align-middle text-muted-foreground sm:px-4"><span title={item.dateNote} class="whitespace-nowrap">{item.announced}</span></td>
-            <td class="px-3 py-3 align-middle sm:px-4"><a href={item.official ? officialSource : thirdPartySource} target="_blank" rel="noopener noreferrer" title={item.official ? "Developer announcement in the Roblox community" : "Third-party code report; official source not verified"} class={item.official ? "font-semibold text-nav underline-offset-4 hover:underline" : "font-medium text-muted-foreground underline-offset-4 hover:underline"}>{item.official ? "Official ↗" : "Third-party ↗"}</a></td>
+            <td class="px-3 py-3 align-middle sm:px-4">{item.official ? <a href={officialSource} target="_blank" rel="noopener noreferrer" title="Developer announcement in the Roblox community" class="font-semibold text-nav underline-offset-4 hover:underline">Official ↗</a> : <span class="font-medium text-muted-foreground" title="No official announcement verified">Third-party</span>}</td>
           </tr>
         ))}
       </tbody>
