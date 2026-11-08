@@ -85,7 +85,7 @@ export const site: SiteConfig = {
   contactEmail: '',
  
   social: {
-    official: '',
+    official: 'https://www.roblox.com/games/74183246285569/Steal-a-Superpower',
   },
 
   

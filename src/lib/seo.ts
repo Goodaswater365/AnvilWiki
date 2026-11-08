@@ -290,7 +290,8 @@ export function videoGameJsonLd() {
     '@type': 'VideoGame',
     name: site.game.name,
     description: site.description,
-    url: siteUrl,
+    // The game's official URL is distinct from this independent fan wiki.
+    url: site.social.official || siteUrl,
     genre: site.game.genre,
     gamePlatform: site.game.platform,
     publisher: { '@type': 'Organization', name: site.game.developer },
