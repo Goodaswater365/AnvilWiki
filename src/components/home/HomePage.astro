@@ -86,6 +86,98 @@ const faq = home.faq?.items ?? [];
     </div>
   </section>
 
+  <!-- Evidence-backed highlights: original game screenshots, not third-party image hotlinks. -->
+  <section class="border-t border-border py-9 sm:py-12" aria-labelledby="featured-powers-title">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Verified game cards</p>
+        <h2 id="featured-powers-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Featured Steal a Superpower Cards</h2>
+        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">Six cards recorded from player-provided in-game screenshots. Open a card to compare its moves, rarity and displayed pack odds.</p>
+      </div>
+      <a href={detailPath('powers', 'verified-card-index', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Full powers index <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+    </div>
+    <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      {[
+        { slug: 'puncher', name: 'Puncher', rarity: 'Common', income: '$5/s', ability: 'Power Jab' },
+        { slug: 'slugger', name: 'Slugger', rarity: 'Common', income: '$5/s', ability: 'Bat Swing' },
+        { slug: 'brawler', name: 'Brawler', rarity: 'Common', income: '$6/s', ability: 'Headbutt' },
+        { slug: 'toxic', name: 'Toxic', rarity: 'Uncommon', income: '$14/s', ability: 'Acid Spit' },
+        { slug: 'hothead', name: 'Hothead', rarity: 'Uncommon', income: '$15/s', ability: 'Fire Punch' },
+        { slug: 'frostbite', name: 'Frostbite', rarity: 'Rare', income: '$38/s', ability: 'Ice Shard' },
+      ].map((card) => (
+        <a href={detailPath('powers', card.slug, locale)} class="group min-w-0 rounded-xl border border-border bg-card p-2.5 transition hover:border-nav/60 hover:shadow-sm">
+          <img src={`/images/powers/${card.slug}.webp`} alt={`${card.name} ${card.rarity} card screenshot from Steal a Superpower`} loading="lazy" decoding="async" width="360" height="480" class="aspect-[3/4] w-full rounded-lg object-contain" />
+          <div class="mt-2 font-semibold group-hover:text-nav">{card.name}</div>
+          <div class="mt-0.5 text-xs text-muted-foreground">{card.rarity} · {card.income}</div>
+          <div class="mt-1 text-xs text-foreground">{card.ability}</div>
+        </a>
+      ))}
+    </div>
+    <p class="mt-3 text-xs leading-relaxed text-muted-foreground">Income is the value shown on a photographed card, not a guarantee of final base earnings. Screenshots reviewed November 8, 2026; stats may change after game updates.</p>
+  </section>
+
+  <!-- Developer-announced codes are not the same as codes verified to redeem today. -->
+  <section class="border-t border-border py-9 sm:py-12" aria-labelledby="codes-snapshot-title">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Announcement evidence</p>
+        <h2 id="codes-snapshot-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Steal a Superpower Codes &amp; Rewards</h2>
+        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">These codes were announced by the developer in the official Roblox community. Current in-game redemption has not been independently tested.</p>
+      </div>
+      <a href={detailPath('codes', 'overview', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">See all 10 codes and sources <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+    </div>
+    <div class="mt-5 overflow-x-auto rounded-xl border border-border bg-card">
+      <table class="w-full min-w-[530px] text-left text-sm">
+        <thead class="border-b border-border bg-muted/40 text-xs uppercase text-muted-foreground">
+          <tr><th scope="col" class="px-4 py-3">Code</th><th scope="col" class="px-4 py-3">Announced reward</th><th scope="col" class="px-4 py-3">Source</th></tr>
+        </thead>
+        <tbody>
+          {[
+            { code: '50KLIKES', reward: 'Tier III Luck, Power, Damage and Health potions' },
+            { code: '30KLIKES', reward: 'Luck Potion III (3× Luck for 15 minutes)' },
+            { code: '20KLIKES', reward: '3× Luck for 15 minutes' },
+            { code: 'POTIONS', reward: 'Luck Potion II' },
+            { code: 'GROUP', reward: 'Champion Pack' },
+          ].map((item) => (
+            <tr class="border-b border-border/70 last:border-b-0">
+              <td class="px-4 py-3 font-mono font-semibold text-foreground">{item.code}</td>
+              <td class="px-4 py-3 text-foreground">{item.reward}</td>
+              <td class="px-4 py-3"><a href="https://www.roblox.com/communities/603354433/11-R-Productions" target="_blank" rel="noopener noreferrer" class="font-semibold text-nav hover:underline">Official announcement</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-xs text-muted-foreground">Announcement screenshots reviewed November 8, 2026. Announced ≠ working today. The full codes page separately labels five additional unverified reports.</p>
+  </section>
+
+  <section class="border-t border-border py-9 sm:py-12" aria-labelledby="beginner-tips-title">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Start here</p>
+        <h2 id="beginner-tips-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Quick Beginner Tips</h2>
+      </div>
+      <a href={detailPath('guides', 'first-hour-progression', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Read the first-hour guide <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+    </div>
+    <div class="mt-5 grid gap-3 md:grid-cols-3">
+      <article class="rounded-xl border border-border bg-card p-5">
+        <h3 class="font-semibold">1. Learn your card moves</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Each superpower has different moves. Check its ability, special attack and level before deciding what to upgrade.</p>
+        <a href={detailPath('powers', 'how-superpower-cards-work', locale)} class="mt-3 inline-block text-sm font-semibold text-nav hover:underline">Cards and leveling</a>
+      </article>
+      <article class="rounded-xl border border-border bg-card p-5">
+        <h3 class="font-semibold">2. Keep base income running</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Place eligible cards on base holders to earn Cash while you fight. Check current in-game rules before assuming offline earnings.</p>
+        <a href={detailPath('base', 'how-base-cash-works', locale)} class="mt-3 inline-block text-sm font-semibold text-nav hover:underline">How base Cash works</a>
+      </article>
+      <article class="rounded-xl border border-border bg-card p-5">
+        <h3 class="font-semibold">3. Prepare for each boss</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Boss victories open new zones and lead to loot chests. Review your Power, Health and card abilities if a fight is difficult.</p>
+        <a href={detailPath('bosses', 'dominus-bosses-and-zones', locale)} class="mt-3 inline-block text-sm font-semibold text-nav hover:underline">Boss and zone guide</a>
+      </article>
+    </div>
+  </section>
+
     <!-- 02-05: Compact 2×2 category overview, as approved in the homepage wireframe. -->
   <section class="border-t border-border py-9 sm:py-12" aria-label="Main wiki categories">
     <div class="grid gap-4 md:grid-cols-2">
