@@ -18,6 +18,10 @@ import { authors } from '~/config/authors';
 /** Repo-root-relative source text (contract-test helper, handbook.test.ts style). */
 const src = (rel: string) => readFileSync(fileURLToPath(new URL(`../${rel}`, import.meta.url)), 'utf8');
 
+// Japanese is a synthetic fixture for validating language-specific SEO behavior;
+// the deployed site currently supports English only.
+const testJa = 'ja' as unknown as import('~/i18n/routing').Locale;
+
 describe('SEO helpers', () => {
   describe('organizationJsonLd', () => {
     it('returns a valid Organization schema', () => {
@@ -116,7 +120,7 @@ describe('SEO helpers', () => {
         categoryLabel: 'ボス一覧',
         title: 'エンバーファング攻略',
         slug: 'emberfang',
-        locale: 'ja',
+        locale: testJa,
       });
       expect(json.itemListElement[0].item).toMatch(/\/ja\/$/);
     });
@@ -124,7 +128,7 @@ describe('SEO helpers', () => {
 
   describe('simpleBreadcrumbJsonLd', () => {
     it('emits the Home item with a trailing slash for every locale', () => {
-      for (const locale of ['en', 'ja'] as const) {
+      for (const locale of ['en', testJa] as const) {
         const json = simpleBreadcrumbJsonLd({
           pageLabel: 'All Bosses',
           path: '/bosses/',
@@ -194,7 +198,7 @@ describe('SEO helpers', () => {
   });
 
   describe('fallbackDetailPaths', () => {
-    const locales = ['en', 'ja'] as const;
+    const locales = ['en', testJa] as const;
     // Coverage shape mirrors astro.config's localeCoverage: "cat/slug" →
     // locales that really have a published MDX.
     const coverage = new Map<string, Set<string>>([
