@@ -71,7 +71,8 @@ const categoryLabel = overview?.overviewTitle ?? nav[category] ?? category;
 const categoryHasList = CONTENT_TYPES.includes(category) && !(site.domain === 'stealasuperpowerwiki.com' && (
   (category === 'codes' && slug === 'overview') ||
   (category === 'guides' && slug === 'steal-a-superpower-getting-started') ||
-  (category === 'upgrades' && slug === 'auras-trails-and-stats')
+  (category === 'upgrades' && slug === 'auras-trails-and-stats') ||
+  (category === 'base' && slug === 'how-base-cash-works')
 ));
 
 const coverUrl = entry.data.image
