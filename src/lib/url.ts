@@ -57,9 +57,12 @@ export function listPath(category: string, locale: Locale): string {
 
 /** Article detail URL. e.g. detailPath('bosses', 'emberfang', 'en') -> '/bosses/emberfang' */
 export function detailPath(category: string, slug: string, locale: Locale): string {
-  // This site's single Codes article lives at the category URL, not /codes/overview/.
-  if (site.domain === 'stealasuperpowerwiki.com' && category === 'codes' && slug === 'overview') {
-    return listPath('codes', locale);
+  // On this site, the single overview article in each of these categories IS the category page.
+  if (site.domain === 'stealasuperpowerwiki.com' && (
+    (category === 'codes' && slug === 'overview') ||
+    (category === 'guides' && slug === 'steal-a-superpower-getting-started')
+  )) {
+    return listPath(category, locale);
   }
   return localizePath(`/${category}/${slug}`, locale);
 }
