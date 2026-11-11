@@ -69,6 +69,11 @@ import {
 import { CONTENT_TYPES, NAVIGATION_CONFIG, PRESET_ONLY_CATEGORIES } from '../src/config/navigation';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
+// These drift guards inspect files that only exist in the uncustomized AnvilWiki demo.
+// A configured game-wiki fork intentionally removes those demo files and identities.
+const currentIdentity = parseSiteTsIdentity(readFileSync(join(repoRoot, 'src/config/site.ts'), 'utf8'));
+const isCustomizedSite = !currentIdentity || !isDemoSiteTsIdentity(currentIdentity);
+
 
 function makeInput(overrides: Partial<SkinInput> = {}): SkinInput {
   return {
@@ -261,7 +266,7 @@ describe('rewriteWranglerVars is value-aware (a re-run must not wipe the user en
     expect(rewriteWranglerVars(makeInput(), demoOnce)).toBe(demoOnce);
   });
 
-  test('DEMO_VAR_VALUES covers every live value in the shipped wrangler.toml (drift guard)', () => {
+  test.skipIf(isCustomizedSite)('DEMO_VAR_VALUES covers every live value in the shipped wrangler.toml (drift guard)', () => {
     // If the demo gains a new non-empty env value that is not registered as a
     // demo value, a re-run would PRESERVE it into every fork — the exact leak
     // this list exists to prevent. Every uncommented [vars] value must either
@@ -820,7 +825,7 @@ describe('hyphen locales (zh-tw / pt-br) generate legal TypeScript', () => {
 });
 
 describe('demo locale deletion is content-aware (rebranded locales must survive re-runs)', () => {
-  test('the shipped demo locale files still carry the site.name marker (marker drift guard)', () => {
+  test.skipIf(isCustomizedSite)('the shipped demo locale files still carry the site.name marker (marker drift guard)', () => {
     for (const locale of ['en', 'ja']) {
       const raw = readFileSync(join(repoRoot, 'src/locales', `${locale}.json`), 'utf8');
       expect(isDemoLocaleContent(raw)).toBe(true);
@@ -847,7 +852,7 @@ describe('demo locale deletion is content-aware (rebranded locales must survive 
 });
 
 describe('demo article clearing is content-aware (re-runs must keep user work)', () => {
-  test('every shipped demo article is demo-identifiable: game marker OR preset-registry claim (marker drift guard)', () => {
+  test.skipIf(isCustomizedSite)('every shipped demo article is demo-identifiable: game marker OR preset-registry claim (marker drift guard)', () => {
     // Mirrors the locale marker guard above: if a template author ships a demo
     // article that is neither Anvil-Quest-marked nor registered in
     // SITE_PRESETS, BOTH clearing layers would KEEP it forever — this goes red
@@ -883,7 +888,7 @@ describe('demo article clearing is content-aware (re-runs must keep user work)',
     }
   });
 
-  test('preset registry demos never rely on the Anvil Quest marker (the two layers stay disjoint)', () => {
+  test.skipIf(isCustomizedSite)('preset registry demos never rely on the Anvil Quest marker (the two layers stay disjoint)', () => {
     const base = join(repoRoot, 'src/content/wiki');
     for (const preset of Object.values(SITE_PRESETS)) {
       for (const [locale, files] of Object.entries(preset.demoArticles)) {
@@ -1078,7 +1083,7 @@ describe('re-run identity detection (S12: re-run = confirm current, never demo d
     expect(empty.releaseDate).toBe('');
   });
 
-  test('the shipped demo site.ts parses as the demo identity (drift guard)', () => {
+  test.skipIf(isCustomizedSite)('the shipped demo site.ts parses as the demo identity (drift guard)', () => {
     const raw = readFileSync(join(repoRoot, 'src/config/site.ts'), 'utf8');
     const id = parseSiteTsIdentity(raw);
     expect(id).not.toBeNull();
@@ -1539,7 +1544,7 @@ describe('SITE_PRESETS registry ↔ disk demo files (bidirectional contract)', (
   const wikiBase = join(repoRoot, 'src/content/wiki');
   const coversBase = join(repoRoot, 'src/assets/covers');
 
-  test('preset categories are LEGAL_CONTENT_TYPES subsets in catalog menu order', () => {
+  test.skipIf(isCustomizedSite)('preset categories are LEGAL_CONTENT_TYPES subsets in catalog menu order', () => {
     // Preset-only keys (recipes) are legal content types but absent from the
     // game-wiki NAVIGATION_CONFIG — their menu order is defined by
     // PRESET_ONLY_CATEGORIES (appended after the game keys, in declared
@@ -1575,7 +1580,7 @@ describe('SITE_PRESETS registry ↔ disk demo files (bidirectional contract)', (
     }
   });
 
-  test('every registry demo article exists on disk (forward direction)', () => {
+  test.skipIf(isCustomizedSite)('every registry demo article exists on disk (forward direction)', () => {
     for (const preset of Object.values(SITE_PRESETS)) {
       for (const [locale, files] of Object.entries(preset.demoArticles)) {
         for (const rel of files) {
@@ -1827,7 +1832,7 @@ describe('preset-aware rewriteLocaleJson (nav/overview labels + cross-preset key
     expect(out.nav.items).toBe('Tools');
   });
 
-  test('a game-wiki FIRST run over the REAL demo ja.json keeps its Japanese labels (zero-breaking)', () => {
+  test.skipIf(isCustomizedSite)('a game-wiki FIRST run over the REAL demo ja.json keeps its Japanese labels (zero-breaking)', () => {
     // The shipped demo ja.json carries real Japanese nav labels (ボス…). The
     // pre-preset overlay kept them on first runs; gating the overlay on
     // re-runs regressed every non-default locale to English TitleCase
@@ -1928,7 +1933,7 @@ describe('preset home builders (coupon/tutorial) keep the game-wiki shape and wa
   });
 });
 
-describe('preset demo internal links whitelist (template side of the fork check-links gate)', () => {
+describe.skipIf(isCustomizedSite)('preset demo internal links whitelist (template side of the fork check-links gate)', () => {
   // A fork's eight-gate CI runs `pnpm check-links` over dist/ (constraint a2),
   // while LANDING_PATHS deletes /landing and the preset narrows the retained
   // categories — so a demo article linking a deleted route or a category
