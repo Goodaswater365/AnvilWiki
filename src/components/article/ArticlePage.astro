@@ -36,7 +36,7 @@ import { getUi } from '~/i18n/ui';
 import { getRelatedEntries, getEntriesByCategory, isPossiblyOutdated, parseEntryId, slugifyTag, estimateReadMinutes, type WikiEntry, type ResolvedEntry } from '~/lib/content';
 import LazyYouTube from '~/components/video/LazyYouTube.astro';
 import SponsorCard from '~/components/article/SponsorCard.astro';
-import { articleJsonLd, breadcrumbJsonLd, pageTitle, videoObjectJsonLd, imageObjectJsonLd, faqPageJsonLd, recipeJsonLd } from '~/lib/seo';
+import { articleJsonLd, breadcrumbJsonLd, simpleBreadcrumbJsonLd, pageTitle, videoObjectJsonLd, imageObjectJsonLd, faqPageJsonLd, recipeJsonLd } from '~/lib/seo';
 import { listPath, detailPath, tagPath, homeUrl } from '~/lib/url';
 import { site } from '~/config/site';
 import { getAuthor } from '~/config/authors';
@@ -68,7 +68,7 @@ const categoryLabel = overview?.overviewTitle ?? nav[category] ?? category;
 // Preset-only categories (recipes on the game demo) build no list page — the
 // breadcrumb category crumb renders as plain text there. Forks whose
 // navigation includes the category get the full link.
-const categoryHasList = CONTENT_TYPES.includes(category);
+const categoryHasList = CONTENT_TYPES.includes(category) && !(site.domain === 'stealasuperpowerwiki.com' && category === 'codes' && slug === 'overview');
 
 const coverUrl = entry.data.image
   ? `${siteUrl}${entry.data.image.src}`
@@ -136,14 +136,14 @@ const jsonLd = [
     authorName: entry.data.author,
     authorSameAs: authorInfo?.sameAs,
   }),
-  breadcrumbJsonLd({
+  ...(categoryHasList ? [breadcrumbJsonLd({
     category,
     categoryLabel,
     title: entry.data.title,
     slug,
     locale,
     homeLabel: nav.home,
-  }),
+  })] : [simpleBreadcrumbJsonLd({ pageLabel: entry.data.title, path: detailPath(category, slug, locale), locale, homeLabel: nav.home })]),
   // One VideoObject per embedded video — Google Video search eligibility.
   ...(entry.data.videos ?? []).map((videoId: string) =>
     videoObjectJsonLd({
