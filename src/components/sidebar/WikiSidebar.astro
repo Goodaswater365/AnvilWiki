@@ -17,7 +17,7 @@ import AdsterraSlot from '~/components/ads/AdsterraSlot.astro';
 import { type Locale } from '~/i18n/routing';
 import { getUi } from '~/i18n/ui';
 import { getDynamicNavigation } from '~/lib/navigation';
-import { localizePath } from '~/lib/url';
+import { detailPath, localizePath } from '~/lib/url';
 import { site } from '~/config/site';
 
 interface Props {
@@ -57,7 +57,7 @@ const groups = await getDynamicNavigation(locale, nav);
           {group.entries.length > 0 && (
             <ul class="space-y-0.5 border-l border-border pl-3">
               {group.entries.map((entry) => {
-                const href = localizePath(entry.path, locale);
+                const href = detailPath(group.key, entry.slug, locale);
                 const isActive = currentPath === href;
                 return (
                   <li>
