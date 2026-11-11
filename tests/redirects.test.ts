@@ -136,6 +136,14 @@ if (isStealSuperpowerWiki) {
       '/upgrades/auras-trails-and-stats /upgrades/ 301',
       '/ja/upgrades/auras-trails-and-stats/ /ja/upgrades/ 301',
       '/ja/upgrades/auras-trails-and-stats /ja/upgrades/ 301',
+      '/base/overview/ /base/ 301',
+      '/base/overview /base/ 301',
+      '/ja/base/overview/ /ja/base/ 301',
+      '/ja/base/overview /ja/base/ 301',
+      '/base/how-base-cash-works/ /base/ 301',
+      '/base/how-base-cash-works /base/ 301',
+      '/ja/base/how-base-cash-works/ /ja/base/ 301',
+      '/ja/base/how-base-cash-works /ja/base/ 301',
     ]);
   });
 } else {
