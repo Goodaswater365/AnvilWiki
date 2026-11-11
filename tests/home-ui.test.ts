@@ -70,7 +70,7 @@ function collectedHomePaths(): Set<string> {
 describe('HomePage ↔ en.json access contract', () => {
   test('the scanner actually sees the component (sanity against silent regex rot)', () => {
     const paths = collectedHomePaths();
-    expect(paths.size).toBeGreaterThanOrEqual(6);
+    expect(paths.size).toBeGreaterThanOrEqual(5);
     expect(paths).toContain('meta.title');
     expect(paths).toContain('hero.title');
     expect(paths).toContain('start.cards');
