@@ -20,8 +20,7 @@
     "language": "Language",
     "powers": "Powers",
     "upgrades": "Upgrades",
-    "base": "Base",
-    "updates": "Updates"
+    "base": "Base"
   },
   "search": {
     "placeholder": "Search the wiki...",
@@ -165,10 +164,6 @@
       "overviewTitle": "Steal a Superpower Base & Cash Guide",
       "overviewDescription": "Understand card holders, Cash generation and six screenshot-verified card income displays to plan your Steal a Superpower base."
     },
-    "updates": {
-      "overviewTitle": "Steal a Superpower Updates",
-      "overviewDescription": "Follow confirmed Steal a Superpower announcements and changes. We distinguish official game updates from newly published wiki articles."
-    },
     "recipes": {
       "overviewTitle": "All Recipes",
       "overviewDescription": "Template demo recipes — swap in your own tested cooking."
@@ -177,12 +172,12 @@
   "home": {
     "meta": {
       "title": "Steal a Superpower Wiki: Codes, Powers & Guides",
-      "description": "This Steal a Superpower Wiki covers redeem codes, superpowers, beginner guides, boss strategies, leveling tips, and game updates."
+      "description": "This Steal a Superpower Wiki covers redeem codes, superpowers, beginner guides, boss strategies, leveling tips, and base progression."
     },
     "hero": {
       "badge": "Fan-Made Community Wiki",
       "title": "Steal a Superpower Wiki – Codes, Powers & Guides",
-      "description": "Game guides, powers, codes, bosses and updates for Steal a Superpower on Roblox.",
+      "description": "Game guides, powers, codes, bosses and upgrades for Steal a Superpower on Roblox.",
       "ctaPrimary": "",
       "ctaSecondary": "Browse Guides",
       "videoId": ""
@@ -241,8 +236,8 @@
           "href": "/codes"
         },
         {
-          "label": "Latest Updates",
-          "href": "/updates"
+          "label": "Recent Articles",
+          "href": "/recent"
         }
       ]
     },
