@@ -24,7 +24,7 @@ Strip away the design and a codes page needs exactly five things per code:
 
 Then the page needs three prose blocks around the list: how to redeem codes step by step, a note on what to do when a code fails, and a short FAQ answering the questions players actually ask ("the code says invalid — why?", "how often do new codes drop?"). That FAQ block is not filler: it is the same question-and-answer shape search engines and AI assistants quote directly.
 
-You can see all of this assembled on the [live demo's codes page](/codes/all-codes/) — active codes with one-click copy, an expired table for the "did X already expire" searches, and the redeem instructions.
+You can see all of this assembled on the [live demo's codes page](https://anvil.wiki/demo/codes/all-codes/) — active codes with one-click copy, an expired table for the "did X already expire" searches, and the redeem instructions.
 
 ## Where do codes come from — and where do they NOT come from?
 
