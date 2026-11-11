@@ -62,7 +62,8 @@ export function detailPath(category: string, slug: string, locale: Locale): stri
     (category === 'codes' && slug === 'overview') ||
     (category === 'guides' && slug === 'steal-a-superpower-getting-started') ||
     (category === 'upgrades' && (slug === 'auras-trails-and-stats' || slug === 'overview')) ||
-    (category === 'base' && (slug === 'how-base-cash-works' || slug === 'overview'))
+    (category === 'base' && (slug === 'how-base-cash-works' || slug === 'overview')) ||
+    (category === 'bosses' && (slug === 'dominus-bosses-and-zones' || slug === 'overview'))
   )) {
     return listPath(category, locale);
   }
