@@ -42,7 +42,10 @@ export async function getStaticPaths() {
     for (const entry of published) {
       const parsed = parseEntryId(entry.id);
       if (!parsed || parsed.locale !== locale) continue;
-      if (site.domain === 'stealasuperpowerwiki.com' && parsed.category === 'codes' && parsed.slug === 'overview') continue;
+      if (site.domain === 'stealasuperpowerwiki.com' && (
+        (parsed.category === 'codes' && parsed.slug === 'overview') ||
+        (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started')
+      )) continue;
       paths.push({ params: { locale, slug: `${parsed.category}/${parsed.slug}` } });
     }
 
@@ -51,7 +54,10 @@ export async function getStaticPaths() {
     for (const entry of published) {
       const parsed = parseEntryId(entry.id);
       if (!parsed || parsed.locale !== defaultLocale) continue;
-      if (site.domain === 'stealasuperpowerwiki.com' && parsed.category === 'codes' && parsed.slug === 'overview') continue;
+      if (site.domain === 'stealasuperpowerwiki.com' && (
+        (parsed.category === 'codes' && parsed.slug === 'overview') ||
+        (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started')
+      )) continue;
       const slugStr = `${parsed.category}/${parsed.slug}`;
       // Avoid duplicate params (if same slug exists in both locales).
       const exists = paths.some((p) => p.params.locale === locale && p.params.slug === slugStr);
@@ -82,13 +88,13 @@ let view: 'list' | 'article' | 'not-found' = 'not-found';
 let category = '';
 let resolved: ResolvedEntry | null = null;
 
-const articleSlug = parts.length === 1 && site.domain === 'stealasuperpowerwiki.com' && parts[0] === 'codes'
-  ? 'overview'
+const articleSlug = parts.length === 1 && site.domain === 'stealasuperpowerwiki.com'
+  ? parts[0] === 'codes' ? 'overview' : parts[0] === 'guides' ? 'steal-a-superpower-getting-started' : ''
   : parts.slice(1).join('/');
 
 if (parts.length === 1) {
   category = parts[0];
-  if (site.domain === 'stealasuperpowerwiki.com' && category === 'codes') {
+  if (site.domain === 'stealasuperpowerwiki.com' && (category === 'codes' || category === 'guides')) {
     resolved = await getEntryWithFallback(category, articleSlug, locale);
     view = resolved ? 'article' : 'not-found';
   } else {
