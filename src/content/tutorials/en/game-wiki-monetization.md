@@ -14,7 +14,7 @@ Three sources, in the order they become available:
 2. **Affiliate commissions** — links to games, storefronts and gear. Smaller but useful, and strongest on pages where the reader is one click from a purchase (game pages, "is it worth buying" guides, setup-gear lists).
 3. **Sponsorships and community support** — once the site is a known fixture for a game, publishers may pay for placement and readers may chip in. This is a consequence of authority, not a strategy to start with.
 
-That order is specific to game wikis: game and gear affiliate commissions run thin, so display advertising earns the workhorse role. General content sites (SaaS tools, tutorial libraries) flip it — affiliate recommendations come first there. The template's demo wiki carries that other order in its [monetization tutorial](/guides/monetize-site-tutorial/).
+That order is specific to game wikis: game and gear affiliate commissions run thin, so display advertising earns the workhorse role. General content sites (SaaS tools, tutorial libraries) flip it — affiliate recommendations come first there. The template's demo wiki carries that other order in its [monetization tutorial](https://anvil.wiki/demo/guides/monetize-site-tutorial/).
 
 What does not work on day one: ads on a site with no visitors (networks will not even approve it), affiliate links with no traffic, and donation buttons with no community. Every failed wiki-monetization story is some order of these three applied too early.
 
