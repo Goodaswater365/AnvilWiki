@@ -61,7 +61,8 @@ export function detailPath(category: string, slug: string, locale: Locale): stri
   if (site.domain === 'stealasuperpowerwiki.com' && (
     (category === 'codes' && slug === 'overview') ||
     (category === 'guides' && slug === 'steal-a-superpower-getting-started') ||
-    (category === 'upgrades' && (slug === 'auras-trails-and-stats' || slug === 'overview'))
+    (category === 'upgrades' && (slug === 'auras-trails-and-stats' || slug === 'overview')) ||
+    (category === 'base' && (slug === 'how-base-cash-works' || slug === 'overview'))
   )) {
     return listPath(category, locale);
   }
