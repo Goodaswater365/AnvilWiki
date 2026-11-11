@@ -60,7 +60,8 @@ export function detailPath(category: string, slug: string, locale: Locale): stri
   // On this site, the single overview article in each of these categories IS the category page.
   if (site.domain === 'stealasuperpowerwiki.com' && (
     (category === 'codes' && slug === 'overview') ||
-    (category === 'guides' && slug === 'steal-a-superpower-getting-started')
+    (category === 'guides' && slug === 'steal-a-superpower-getting-started') ||
+    (category === 'upgrades' && (slug === 'auras-trails-and-stats' || slug === 'overview'))
   )) {
     return listPath(category, locale);
   }
