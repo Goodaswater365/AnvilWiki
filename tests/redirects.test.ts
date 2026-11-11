@@ -107,6 +107,22 @@ function slugOf(pathname: string): string {
   return parts[parts.length - 1];
 }
 
+const isStealSuperpowerWiki = readFileSync(`${repoRoot}src/config/site.ts`, 'utf8').includes("domain: 'stealasuperpowerwiki.com'");
+
+if (isStealSuperpowerWiki) {
+  test('retired Codes article URL redirects permanently to the canonical /codes/ page', () => {
+    const rules = readFileSync(`${repoRoot}public/_redirects`, 'utf8')
+      .split('\\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.startsWith('#'));
+    expect(rules).toEqual([
+      '/codes/overview/ /codes/ 301',
+      '/codes/overview /codes/ 301',
+      '/ja/codes/overview/ /ja/codes/ 301',
+      '/ja/codes/overview /ja/codes/ 301',
+    ]);
+  });
+} else {
 describe('public/_redirects (renamed handbook lesson slugs)', () => {
   const rules = parseRedirects();
   const handbookRules = rules.filter(isHandbookRule);
@@ -246,3 +262,5 @@ test('the shadow page and the root rule agree on the redirect target', () => {
   expect(rootRule, 'root gateway rule `/ /zh/landing/ 301`').toBeDefined();
   expect(rootRule?.target).toBe('/zh/landing/');
 });
+
+}
