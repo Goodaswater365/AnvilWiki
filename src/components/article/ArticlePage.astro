@@ -68,7 +68,10 @@ const categoryLabel = overview?.overviewTitle ?? nav[category] ?? category;
 // Preset-only categories (recipes on the game demo) build no list page — the
 // breadcrumb category crumb renders as plain text there. Forks whose
 // navigation includes the category get the full link.
-const categoryHasList = CONTENT_TYPES.includes(category) && !(site.domain === 'stealasuperpowerwiki.com' && category === 'codes' && slug === 'overview');
+const categoryHasList = CONTENT_TYPES.includes(category) && !(site.domain === 'stealasuperpowerwiki.com' && (
+  (category === 'codes' && slug === 'overview') ||
+  (category === 'guides' && slug === 'steal-a-superpower-getting-started')
+));
 
 const coverUrl = entry.data.image
   ? `${siteUrl}${entry.data.image.src}`
