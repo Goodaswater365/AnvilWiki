@@ -148,6 +148,14 @@ if (isStealSuperpowerWiki) {
       '/updates /recent/ 301',
       '/ja/updates/ /ja/recent/ 301',
       '/ja/updates /ja/recent/ 301',
+      '/bosses/overview/ /bosses/ 301',
+      '/bosses/overview /bosses/ 301',
+      '/ja/bosses/overview/ /ja/bosses/ 301',
+      '/ja/bosses/overview /ja/bosses/ 301',
+      '/bosses/dominus-bosses-and-zones/ /bosses/ 301',
+      '/bosses/dominus-bosses-and-zones /bosses/ 301',
+      '/ja/bosses/dominus-bosses-and-zones/ /ja/bosses/ 301',
+      '/ja/bosses/dominus-bosses-and-zones /ja/bosses/ 301',
     ]);
   });
 } else {
