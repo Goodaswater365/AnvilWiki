@@ -1,4 +1,8 @@
-# Retired Codes detail URL; the full article now lives at /codes/.
+# Retired articles: redirect to the consolidated canonical pages.
+/guides/first-hour-progression/ /guides/steal-a-superpower-getting-started/ 301
+/guides/first-hour-progression /guides/steal-a-superpower-getting-started/ 301
+/ja/guides/first-hour-progression/ /ja/guides/steal-a-superpower-getting-started/ 301
+/ja/guides/first-hour-progression /ja/guides/steal-a-superpower-getting-started/ 301
 /codes/overview/ /codes/ 301
 /codes/overview /codes/ 301
 /ja/codes/overview/ /ja/codes/ 301
