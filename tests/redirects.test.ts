@@ -120,10 +120,14 @@ if (isStealSuperpowerWiki) {
       '/codes/overview /codes/ 301',
       '/ja/codes/overview/ /ja/codes/ 301',
       '/ja/codes/overview /ja/codes/ 301',
-      '/guides/first-hour-progression/ /guides/steal-a-superpower-getting-started/ 301',
-      '/guides/first-hour-progression /guides/steal-a-superpower-getting-started/ 301',
-      '/ja/guides/first-hour-progression/ /ja/guides/steal-a-superpower-getting-started/ 301',
-      '/ja/guides/first-hour-progression /ja/guides/steal-a-superpower-getting-started/ 301',
+      '/guides/first-hour-progression/ /guides/ 301',
+      '/guides/first-hour-progression /guides/ 301',
+      '/ja/guides/first-hour-progression/ /ja/guides/ 301',
+      '/ja/guides/first-hour-progression /ja/guides/ 301',
+      '/guides/steal-a-superpower-getting-started/ /guides/ 301',
+      '/guides/steal-a-superpower-getting-started /guides/ 301',
+      '/ja/guides/steal-a-superpower-getting-started/ /ja/guides/ 301',
+      '/ja/guides/steal-a-superpower-getting-started /ja/guides/ 301',
     ]);
   });
 } else {
