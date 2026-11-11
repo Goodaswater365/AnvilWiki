@@ -144,6 +144,10 @@ if (isStealSuperpowerWiki) {
       '/base/how-base-cash-works /base/ 301',
       '/ja/base/how-base-cash-works/ /ja/base/ 301',
       '/ja/base/how-base-cash-works /ja/base/ 301',
+      '/updates/ /recent/ 301',
+      '/updates /recent/ 301',
+      '/ja/updates/ /ja/recent/ 301',
+      '/ja/updates /ja/recent/ 301',
     ]);
   });
 } else {
