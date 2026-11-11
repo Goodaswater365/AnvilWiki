@@ -33,7 +33,10 @@ export async function getStaticPaths() {
     if (entry.data.draft && !isDev) continue;
     const parsed = parseEntryId(entry.id);
     if (!parsed || parsed.locale !== defaultLocale) continue;
-    if (site.domain === 'stealasuperpowerwiki.com' && parsed.category === 'codes' && parsed.slug === 'overview') continue;
+    if (site.domain === 'stealasuperpowerwiki.com' && (
+      (parsed.category === 'codes' && parsed.slug === 'overview') ||
+      (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started')
+    )) continue;
     paths.push({ params: { slug: `${parsed.category}/${parsed.slug}` } });
   }
 
@@ -56,8 +59,8 @@ let resolved: ResolvedEntry | null = null;
 
 if (parts.length === 1) {
   category = parts[0];
-  if (site.domain === 'stealasuperpowerwiki.com' && category === 'codes') {
-    articleSlug = 'overview';
+  if (site.domain === 'stealasuperpowerwiki.com' && (category === 'codes' || category === 'guides')) {
+    articleSlug = category === 'codes' ? 'overview' : 'steal-a-superpower-getting-started';
     resolved = await getEntryWithFallback(category, articleSlug, locale);
     view = resolved ? 'article' : 'not-found';
   } else {
