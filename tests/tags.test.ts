@@ -2,6 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { videoObjectJsonLd, urlListJsonLd, imageObjectJsonLd } from '~/lib/seo';
 import { slugifyTag, tagPath, tagsPath, recentPath } from '~/lib/url';
 
+// Exercise the non-default-locale URL branch without enabling Japanese site pages.
+const testJa = 'ja' as unknown as import('~/i18n/routing').Locale;
+
 describe('slugifyTag', () => {
   it('lowercases and hyphenates whitespace', () => {
     expect(slugifyTag('Fire Boss')).toBe('fire-boss');
@@ -31,9 +34,9 @@ describe('tag/recent URL helpers', () => {
     expect(recentPath('en')).toBe('/recent/');
   });
   it('prefixes non-default locales', () => {
-    expect(tagsPath('ja')).toBe('/ja/tags/');
-    expect(tagPath('fire-boss', 'ja')).toBe('/ja/tags/fire-boss/');
-    expect(recentPath('ja')).toBe('/ja/recent/');
+    expect(tagsPath(testJa)).toBe('/ja/tags/');
+    expect(tagPath('fire-boss', testJa)).toBe('/ja/tags/fire-boss/');
+    expect(recentPath(testJa)).toBe('/ja/recent/');
   });
 });
 
