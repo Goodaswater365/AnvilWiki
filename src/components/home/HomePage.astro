@@ -227,7 +227,7 @@ const faq = home.faq?.items ?? [];
     <p class="mt-2 text-sm text-muted-foreground">Upgrade paths, base features and player progression guides as the information is verified.</p>
     <div class="mt-5 flex flex-wrap gap-3">
       {gameSystems.map((item) => (
-        <a href={item.key === 'codes' ? detailPath('codes', 'overview', locale) : listPath(item.key, locale)} class="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold transition hover:border-nav/50 hover:text-nav">
+        <a href={listPath(item.key, locale)} class="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold transition hover:border-nav/50 hover:text-nav">
           <Icon name={item.icon} class="h-5 w-5 text-nav" /> {item.title} <Icon name="lucide:arrow-up-right" class="h-4 w-4 text-muted-foreground" />
         </a>
       ))}
