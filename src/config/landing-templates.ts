@@ -74,7 +74,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'Cover + 2–4 captioned gallery shots; 1200×675 covers generated with pnpm gen-covers',
           'Inline video registered in frontmatter → VideoObject JSON-LD',
         ],
-        links: [{ label: 'Stormcaller boss guide', href: '/bosses/stormcaller/' }],
+        links: [{ label: 'Stormcaller boss guide', href: 'https://anvil.wiki/demo/bosses/stormcaller/' }],
       },
       {
         name: 'Codes page',
@@ -85,7 +85,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'Auto-splits into an Active section (one-click copy) and an Expired table — keeps "is X still working" long-tail traffic',
           'FAQPage JSON-LD merged from the faq frontmatter',
         ],
-        links: [{ label: 'All working codes', href: '/codes/all-codes/' }],
+        links: [{ label: 'All working codes', href: 'https://anvil.wiki/demo/codes/all-codes/' }],
       },
       {
         name: 'Tier list',
@@ -96,7 +96,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'summary frontmatter (a 40–60 word direct answer) → Quick Answer card + AI Overviews candidate',
           'Card images on headline entries',
         ],
-        links: [{ label: 'Weapon tier list', href: '/guides/weapon-tier-list/' }],
+        links: [{ label: 'Weapon tier list', href: 'https://anvil.wiki/demo/guides/weapon-tier-list/' }],
       },
       {
         name: 'Beginner guide',
@@ -107,7 +107,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'Accordion / Callout components for tips, warnings and collapsible depth',
           'check-content lints every page: no H1, heading order, alt text, ≥3 internal links',
         ],
-        links: [{ label: 'Beginner guide', href: '/guides/beginner-guide/' }],
+        links: [{ label: 'Beginner guide', href: 'https://anvil.wiki/demo/guides/beginner-guide/' }],
       },
       {
         name: 'Item & equipment pages',
@@ -119,8 +119,8 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'Same MDX + Zod-validated frontmatter as every other page — one format to learn',
         ],
         links: [
-          { label: 'Forging materials guide', href: '/items/forging-materials-guide/' },
-          { label: 'Emberforged armor set', href: '/items/emberforged-armor-set/' },
+          { label: 'Forging materials guide', href: 'https://anvil.wiki/demo/items/forging-materials-guide/' },
+          { label: 'Emberforged armor set', href: 'https://anvil.wiki/demo/items/emberforged-armor-set/' },
         ],
       },
       {
@@ -167,7 +167,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           '封面 + 2–4 张带说明的机制图;封面 1200×675 用 pnpm gen-covers 生成',
           '正文内联视频登记进 frontmatter videos → 输出 VideoObject JSON-LD',
         ],
-        links: [{ label: 'Stormcaller Boss 攻略', href: '/bosses/stormcaller/' }],
+        links: [{ label: 'Stormcaller Boss 攻略', href: 'https://anvil.wiki/demo/bosses/stormcaller/' }],
       },
       {
         name: '兑换码页',
@@ -177,7 +177,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           '自动分组:Active 区(CodeBlock 一键复制)+ Expired 表格——承接「XX 还能用吗」长尾',
           'frontmatter faq 合并输出 FAQPage JSON-LD',
         ],
-        links: [{ label: '全部有效兑换码', href: '/codes/all-codes/' }],
+        links: [{ label: '全部有效兑换码', href: 'https://anvil.wiki/demo/codes/all-codes/' }],
       },
       {
         name: 'Tier List 强度榜',
@@ -187,7 +187,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'frontmatter summary(40–60 词直答)→ Quick Answer 卡片 + AI Overviews 摘要候选',
           '头部条目配卡片图',
         ],
-        links: [{ label: '武器强度榜', href: '/guides/weapon-tier-list/' }],
+        links: [{ label: '武器强度榜', href: 'https://anvil.wiki/demo/guides/weapon-tier-list/' }],
       },
       {
         name: '新手攻略页',
@@ -197,7 +197,7 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           'Accordion / Callout 组件承载提示、警告与折叠细节',
           'check-content 逐页体检:禁 H1、标题层级、alt 文本、正文 ≥3 条站内链',
         ],
-        links: [{ label: '新手攻略', href: '/guides/beginner-guide/' }],
+        links: [{ label: '新手攻略', href: 'https://anvil.wiki/demo/guides/beginner-guide/' }],
       },
       {
         name: '装备 / 物品页',
@@ -208,8 +208,8 @@ export const templatesContent: Record<LandingLocale, TemplatesPageContent> = {
           '与其他页型同一套 MDX + Zod 校验的 frontmatter——只学一种格式',
         ],
         links: [
-          { label: '锻造材料指南', href: '/items/forging-materials-guide/' },
-          { label: 'Emberforged 套装', href: '/items/emberforged-armor-set/' },
+          { label: '锻造材料指南', href: 'https://anvil.wiki/demo/items/forging-materials-guide/' },
+          { label: 'Emberforged 套装', href: 'https://anvil.wiki/demo/items/emberforged-armor-set/' },
         ],
       },
       {
