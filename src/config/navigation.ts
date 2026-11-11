@@ -34,7 +34,6 @@ export const NAVIGATION_CONFIG: NavigationItem[] = [
   { key: 'guides', path: '/guides', icon: 'lucide:book-open', isContentType: true },
   { key: 'upgrades', path: '/upgrades', icon: 'lucide:arrow-up-circle', isContentType: true },
   { key: 'base', path: '/base', icon: 'lucide:house', isContentType: true },
-  { key: 'updates', path: '/updates', icon: 'lucide:calendar-days', isContentType: true },
 ];
 
 /** Derived list of content type slugs (e.g. ['bosses', 'guides', 'items', 'codes']). */
