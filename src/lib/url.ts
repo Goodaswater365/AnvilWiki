@@ -8,6 +8,7 @@
 import { defaultLocale, type Locale } from '~/i18n/routing';
 import { siteUrl } from '~/config/site';
 import { landingLinkEnabled } from '~/config/project';
+import { site } from '~/config/site';
 
 /** Build a path with the locale prefix applied (or none for default locale). */
 export function localizePath(path: string, locale: Locale): string {
@@ -56,6 +57,10 @@ export function listPath(category: string, locale: Locale): string {
 
 /** Article detail URL. e.g. detailPath('bosses', 'emberfang', 'en') -> '/bosses/emberfang' */
 export function detailPath(category: string, slug: string, locale: Locale): string {
+  // This site's single Codes article lives at the category URL, not /codes/overview/.
+  if (site.domain === 'stealasuperpowerwiki.com' && category === 'codes' && slug === 'overview') {
+    return listPath('codes', locale);
+  }
   return localizePath(`/${category}/${slug}`, locale);
 }
 
