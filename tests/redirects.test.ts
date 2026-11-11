@@ -112,7 +112,7 @@ const isStealSuperpowerWiki = readFileSync(`${repoRoot}src/config/site.ts`, 'utf
 if (isStealSuperpowerWiki) {
   test('retired Codes article URL redirects permanently to the canonical /codes/ page', () => {
     const rules = readFileSync(`${repoRoot}public/_redirects`, 'utf8')
-      .split('\\n')
+      .split('\n')
       .map((line) => line.trim())
       .filter((line) => line && !line.startsWith('#'));
     expect(rules).toEqual([
