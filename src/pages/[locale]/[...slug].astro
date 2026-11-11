@@ -12,6 +12,7 @@ import ListPage from '~/components/article/ListPage.astro';
 import ArticlePage from '~/components/article/ArticlePage.astro';
 import { CONTENT_TYPES, LEGAL_CONTENT_TYPES } from '~/config/navigation';
 import { isLocale, defaultLocale, locales, type Locale } from '~/i18n/routing';
+import { site } from '~/config/site';
 import { getEntryWithFallback, localesForEntry, localesForCategory, parseEntryId, type ResolvedEntry } from '~/lib/content';
 import { detailPath, languageAlternates, listPath } from '~/lib/url';
 
@@ -41,6 +42,7 @@ export async function getStaticPaths() {
     for (const entry of published) {
       const parsed = parseEntryId(entry.id);
       if (!parsed || parsed.locale !== locale) continue;
+      if (site.domain === 'stealasuperpowerwiki.com' && parsed.category === 'codes' && parsed.slug === 'overview') continue;
       paths.push({ params: { locale, slug: `${parsed.category}/${parsed.slug}` } });
     }
 
@@ -49,6 +51,7 @@ export async function getStaticPaths() {
     for (const entry of published) {
       const parsed = parseEntryId(entry.id);
       if (!parsed || parsed.locale !== defaultLocale) continue;
+      if (site.domain === 'stealasuperpowerwiki.com' && parsed.category === 'codes' && parsed.slug === 'overview') continue;
       const slugStr = `${parsed.category}/${parsed.slug}`;
       // Avoid duplicate params (if same slug exists in both locales).
       const exists = paths.some((p) => p.params.locale === locale && p.params.slug === slugStr);
@@ -79,11 +82,18 @@ let view: 'list' | 'article' | 'not-found' = 'not-found';
 let category = '';
 let resolved: ResolvedEntry | null = null;
 
-const articleSlug = parts.slice(1).join('/');
+const articleSlug = parts.length === 1 && site.domain === 'stealasuperpowerwiki.com' && parts[0] === 'codes'
+  ? 'overview'
+  : parts.slice(1).join('/');
 
 if (parts.length === 1) {
   category = parts[0];
-  view = CONTENT_TYPES.includes(category) ? 'list' : 'not-found';
+  if (site.domain === 'stealasuperpowerwiki.com' && category === 'codes') {
+    resolved = await getEntryWithFallback(category, articleSlug, locale);
+    view = resolved ? 'article' : 'not-found';
+  } else {
+    view = CONTENT_TYPES.includes(category) ? 'list' : 'not-found';
+  }
 } else {
   category = parts[0];
   if (LEGAL_CONTENT_TYPES.includes(category)) {
