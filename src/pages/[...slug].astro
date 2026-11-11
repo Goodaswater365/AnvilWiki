@@ -35,7 +35,8 @@ export async function getStaticPaths() {
     if (!parsed || parsed.locale !== defaultLocale) continue;
     if (site.domain === 'stealasuperpowerwiki.com' && (
       (parsed.category === 'codes' && parsed.slug === 'overview') ||
-      (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started')
+      (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started') ||
+      (parsed.category === 'upgrades' && (parsed.slug === 'auras-trails-and-stats' || parsed.slug === 'overview'))
     )) continue;
     paths.push({ params: { slug: `${parsed.category}/${parsed.slug}` } });
   }
@@ -59,8 +60,8 @@ let resolved: ResolvedEntry | null = null;
 
 if (parts.length === 1) {
   category = parts[0];
-  if (site.domain === 'stealasuperpowerwiki.com' && (category === 'codes' || category === 'guides')) {
-    articleSlug = category === 'codes' ? 'overview' : 'steal-a-superpower-getting-started';
+  if (site.domain === 'stealasuperpowerwiki.com' && (category === 'codes' || category === 'guides' || category === 'upgrades')) {
+    articleSlug = category === 'codes' ? 'overview' : category === 'guides' ? 'steal-a-superpower-getting-started' : 'auras-trails-and-stats';
     resolved = await getEntryWithFallback(category, articleSlug, locale);
     view = resolved ? 'article' : 'not-found';
   } else {
