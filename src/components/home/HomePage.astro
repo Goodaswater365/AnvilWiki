@@ -237,15 +237,15 @@ const faq = home.faq?.items ?? [];
     </div>
   </section>
 
-  <!-- 07: Separate site articles from game patch notes -->
+  <!-- 07: Recently published wiki articles (not game patch notes) -->
   <section class="border-t border-border py-10 sm:py-12" aria-labelledby="updates-title">
     <div class="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">07 / What's new</p>
-        <h2 id="updates-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Latest Game &amp; Wiki Updates</h2>
-        <p class="mt-2 text-sm text-muted-foreground">Recently published guides and reference articles. For confirmed game changes, visit Updates.</p>
+        <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">07 / New articles</p>
+        <h2 id="updates-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Latest Wiki Articles</h2>
+        <p class="mt-2 text-sm text-muted-foreground">Recently published guides and reference articles.</p>
       </div>
-      <a href={listPath('updates', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Game updates <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+      <a href={listPath('recent', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">All recent articles <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
     </div>
     {recent.length > 0 ? (
       <div class="mt-6 grid gap-4 sm:grid-cols-2">
