@@ -44,7 +44,8 @@ export async function getStaticPaths() {
       if (!parsed || parsed.locale !== locale) continue;
       if (site.domain === 'stealasuperpowerwiki.com' && (
         (parsed.category === 'codes' && parsed.slug === 'overview') ||
-        (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started')
+        (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started') ||
+        (parsed.category === 'upgrades' && (parsed.slug === 'auras-trails-and-stats' || parsed.slug === 'overview'))
       )) continue;
       paths.push({ params: { locale, slug: `${parsed.category}/${parsed.slug}` } });
     }
@@ -56,7 +57,8 @@ export async function getStaticPaths() {
       if (!parsed || parsed.locale !== defaultLocale) continue;
       if (site.domain === 'stealasuperpowerwiki.com' && (
         (parsed.category === 'codes' && parsed.slug === 'overview') ||
-        (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started')
+        (parsed.category === 'guides' && parsed.slug === 'steal-a-superpower-getting-started') ||
+        (parsed.category === 'upgrades' && (parsed.slug === 'auras-trails-and-stats' || parsed.slug === 'overview'))
       )) continue;
       const slugStr = `${parsed.category}/${parsed.slug}`;
       // Avoid duplicate params (if same slug exists in both locales).
@@ -89,12 +91,12 @@ let category = '';
 let resolved: ResolvedEntry | null = null;
 
 const articleSlug = parts.length === 1 && site.domain === 'stealasuperpowerwiki.com'
-  ? parts[0] === 'codes' ? 'overview' : parts[0] === 'guides' ? 'steal-a-superpower-getting-started' : ''
+  ? parts[0] === 'codes' ? 'overview' : parts[0] === 'guides' ? 'steal-a-superpower-getting-started' : parts[0] === 'upgrades' ? 'auras-trails-and-stats' : ''
   : parts.slice(1).join('/');
 
 if (parts.length === 1) {
   category = parts[0];
-  if (site.domain === 'stealasuperpowerwiki.com' && (category === 'codes' || category === 'guides')) {
+  if (site.domain === 'stealasuperpowerwiki.com' && (category === 'codes' || category === 'guides' || category === 'upgrades')) {
     resolved = await getEntryWithFallback(category, articleSlug, locale);
     view = resolved ? 'article' : 'not-found';
   } else {
