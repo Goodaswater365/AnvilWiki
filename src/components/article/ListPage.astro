@@ -104,6 +104,16 @@ const jsonLd = [
       <p class="mt-2 max-w-2xl text-muted-foreground">{description}</p>
     </header>
 
+    {category === 'powers' && site.domain === 'stealasuperpowerwiki.com' && (
+      <a href="/tier-list/" class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-nav/40 bg-card p-5 transition hover:border-nav hover:shadow-sm">
+        <span>
+          <span class="block text-lg font-bold">Steal a Superpower Tier List</span>
+          <span class="mt-1 block text-sm text-muted-foreground">Compare verified powers and see which combat rankings still need testing.</span>
+        </span>
+        <span class="inline-flex items-center gap-2 font-semibold text-nav">View Tier List <Icon name="lucide:arrow-right" class="h-4 w-4" /></span>
+      </a>
+    )}
+
     {
       entries.length === 0 ? (
         <div class="rounded-lg border border-dashed bg-card p-12 text-center">
