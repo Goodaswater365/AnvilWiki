@@ -1,0 +1,72 @@
+---
+import { Icon } from 'astro-icon/components';
+import LocaleLayout from '~/components/layout/LocaleLayout.astro';
+import { defaultLocale } from '~/i18n/routing';
+import { pageTitle, simpleBreadcrumbJsonLd } from '~/lib/seo';
+
+const cards = [
+  { slug: 'puncher', name: 'Puncher', rarity: 'Common', ability: 'Power Jab', special: 'Mega Punch', income: '$5/s' },
+  { slug: 'slugger', name: 'Slugger', rarity: 'Common', ability: 'Bat Swing', special: 'Home Run Smash', income: '$5/s' },
+  { slug: 'brawler', name: 'Brawler', rarity: 'Common', ability: 'Headbutt', special: 'Body Slam', income: '$6/s' },
+  { slug: 'toxic', name: 'Toxic', rarity: 'Uncommon', ability: 'Acid Spit', special: 'Toxic Wave', income: '$14/s' },
+  { slug: 'hothead', name: 'Hothead', rarity: 'Uncommon', ability: 'Fire Punch', special: 'Inferno Uppercut', income: '$15/s' },
+  { slug: 'frostbite', name: 'Frostbite', rarity: 'Rare', ability: 'Ice Shard', special: 'Blizzard', income: '$38/s' },
+];
+const description = 'Steal a Superpower tier list guide: compare six screenshot-verified cards and learn why combat S–D rankings still need in-game testing.';
+const jsonLd = [simpleBreadcrumbJsonLd({ pageLabel: 'Tier List', path: '/tier-list', locale: defaultLocale, homeLabel: 'Home' })];
+---
+
+<LocaleLayout locale={defaultLocale} title={pageTitle('Steal a Superpower Tier List')} description={description} jsonLd={jsonLd}>
+  <div class="mx-auto max-w-5xl space-y-8">
+    <nav aria-label="Breadcrumb" class="text-sm text-muted-foreground"><a href="/" class="hover:text-nav">Home</a> / <a href="/powers/" class="hover:text-nav">Powers</a> / <span class="text-foreground">Tier List</span></nav>
+    <header>
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Steal a Superpower Tier List</h1>
+      <p class="mt-3 max-w-3xl text-muted-foreground">Compare documented Roblox superpower cards and understand what makes a power strong. We do not assign unsupported S, A, B, C or D combat grades.</p>
+      <p class="mt-2 text-sm text-muted-foreground">Card screenshot evidence last reviewed: November 8, 2026. Combat rankings have not been independently tested.</p>
+    </header>
+
+    <section class="rounded-xl border border-border bg-card p-5 sm:p-6" aria-labelledby="tier-status">
+      <h2 id="tier-status" class="text-xl font-bold">Current tier list status: rankings pending</h2>
+      <p class="mt-2 text-sm leading-7 text-muted-foreground">The game shows card rarity and moves, but rarity alone cannot establish which card wins fights. A trustworthy tier list needs comparable damage, cooldown, range, survivability and performance against players or bosses. Until those results are verified, all six cards below remain <strong>unranked</strong>.</p>
+      <div class="mt-4 flex flex-wrap gap-2" aria-label="Tier rating legend">
+        {['S', 'A', 'B', 'C', 'D'].map((tier) => <span class="rounded-lg border border-border px-4 py-2 text-sm font-semibold">{tier} tier: no verified placements</span>)}
+      </div>
+    </section>
+
+    <section aria-labelledby="compared-powers">
+      <h2 id="compared-powers" class="text-2xl font-bold">Six screenshot-verified cards to compare</h2>
+      <p class="mt-2 text-sm text-muted-foreground">These are observed card values, not battle tier ratings. Displayed income is not a measure of damage or PvP strength.</p>
+      <div class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {cards.map((card) => (
+          <a href={`/powers/${card.slug}/`} class="rounded-xl border border-border bg-card p-3 transition hover:border-nav/60 hover:shadow-sm">
+            <img src={`/images/powers/${card.slug}.webp`} width="360" height="480" loading="lazy" decoding="async" alt={`${card.name} in-game card screenshot`} class="aspect-[3/4] w-full rounded-lg object-contain" />
+            <h3 class="mt-2 font-bold">{card.name}</h3>
+            <p class="text-xs text-muted-foreground">{card.rarity} · {card.income} displayed</p>
+            <p class="mt-1 text-sm">{card.ability} · {card.special}</p>
+            <span class="mt-2 inline-block text-xs font-medium text-muted-foreground">Combat tier: Unranked</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="criteria">
+      <h2 id="criteria" class="text-2xl font-bold">How future tier ratings will be decided</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-6 text-sm leading-7">
+        <li><strong>Combat damage:</strong> measured ability and special-attack output at comparable card levels.</li>
+        <li><strong>Cooldown and range:</strong> how reliably attacks connect and how frequently they can be used.</li>
+        <li><strong>Survivability:</strong> defensive tools and consistency in difficult encounters.</li>
+        <li><strong>Use cases:</strong> separate PvP, boss fights and progression instead of presenting one misleading universal winner.</li>
+      </ul>
+      <p class="mt-4 text-sm text-muted-foreground">A stronger income figure or rarer card does not automatically mean a higher combat tier. Future rankings will include their test method and review date.</p>
+    </section>
+
+    <section class="rounded-xl border border-border bg-card p-5" aria-labelledby="more-powers">
+      <h2 id="more-powers" class="text-lg font-bold">Explore the power database</h2>
+      <p class="mt-2 text-sm text-muted-foreground">For card abilities, rarity, screenshot sources and available pack odds, visit the verified card index.</p>
+      <div class="mt-3 flex flex-wrap gap-4">
+        <a href="/powers/verified-card-index/" class="inline-flex items-center gap-2 font-semibold text-nav hover:underline">Verified Card Index <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+        <a href="/powers/" class="inline-flex items-center gap-2 font-semibold text-nav hover:underline">All Powers <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+      </div>
+    </section>
+  </div>
+</LocaleLayout>
