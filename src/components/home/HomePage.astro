@@ -94,7 +94,10 @@ const faq = home.faq?.items ?? [];
         <h2 id="featured-powers-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Featured Steal a Superpower Cards</h2>
         <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">Six cards recorded from player-provided in-game screenshots. Open a card to compare its moves, rarity and displayed pack odds.</p>
       </div>
-      <a href={detailPath('powers', 'verified-card-index', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Full powers index <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="/tier-list/" class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Tier List <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+        <a href={detailPath('powers', 'verified-card-index', locale)} class="inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">Full powers index <Icon name="lucide:arrow-right" class="h-4 w-4" /></a>
+      </div>
     </div>
     <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
       {[
