@@ -82,7 +82,7 @@ export const site: SiteConfig = {
 
   // 👉 APPLY TEMPLATE: set a real address if you run no social channels —
   // the contact page renders it as a mailto link.
-  contactEmail: '',
+  contactEmail: 'contact@stealasuperpowerwiki.com',
  
   social: {
     official: 'https://www.roblox.com/games/74183246285569/Steal-a-Superpower',
