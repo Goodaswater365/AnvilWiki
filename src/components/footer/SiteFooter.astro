@@ -49,6 +49,13 @@ const legalLinks: Array<keyof typeof footer> = ['about', 'faq', 'privacyPolicy',
             {shared.allTags}
           </a>
         </p>
+        {/* Public contact address shared across all pages. */}
+        {site.contactEmail && (
+          <a href={`mailto:${site.contactEmail}`} class="mt-3 inline-flex items-center gap-2 break-all text-sm text-foreground/80 transition hover:text-nav">
+            <Icon name="lucide:mail" class="h-4 w-4 shrink-0" />
+            {site.contactEmail}
+          </a>
+        )}
       </div>
 
       {/* Socials */}
@@ -98,14 +105,7 @@ const legalLinks: Array<keyof typeof footer> = ['about', 'faq', 'privacyPolicy',
       </div>
     </div>
 
-    <div class="mt-8 space-y-2 border-t border-border pt-6">
-      {/* Public contact address shared across all pages. */}
-      {site.contactEmail && (
-        <a href={`mailto:${site.contactEmail}`} class="inline-flex items-center gap-2 break-all text-sm font-medium text-foreground transition hover:text-nav">
-          <Icon name="lucide:mail" class="h-4 w-4 shrink-0" />
-          {site.contactEmail}
-        </a>
-      )}
+    <div class="mt-8 space-y-1 border-t border-border pt-6">
       {/* Copyright line and the fan-site legal notice are SEPARATE lines —
           a `copyrightText ?? legalNotice` short-circuit left forks (whose
           CLI rewrites copyrightText without the disclaimer) with no notice. */}
