@@ -99,6 +99,7 @@ const legalLinks: Array<keyof typeof footer> = ['about', 'faq', 'privacyPolicy',
     </div>
 
     <div class="mt-8 space-y-2 border-t border-border pt-6">
+      {/* Public contact address shared across all pages. */}
       {site.contactEmail && (
         <a href={`mailto:${site.contactEmail}`} class="inline-flex items-center gap-2 break-all text-sm font-medium text-foreground transition hover:text-nav">
           <Icon name="lucide:mail" class="h-4 w-4 shrink-0" />
