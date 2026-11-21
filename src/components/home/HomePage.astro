@@ -291,7 +291,7 @@ const faq = home.faq?.items ?? [];
       <h2 id="faq-title" class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">{home.faq.title}</h2>
       <p class="mt-2 text-sm text-muted-foreground">{home.faq.description}</p>
       <div class="mt-6 grid gap-3">
-        {faq.slice(0, 6).map((item) => (
+        {faq.slice(0, 9).map((item) => (
           <details class="group rounded-xl border border-border bg-card p-5">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold">
               {item.question}<Icon name="lucide:chevron-down" class="h-4 w-4 shrink-0 text-muted-foreground transition group-open:rotate-180" />
