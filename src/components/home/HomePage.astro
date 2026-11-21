@@ -86,6 +86,23 @@ const faq = home.faq?.items ?? [];
     </div>
   </section>
 
+  <!-- Answer play-location intent explicitly without suggesting the fan wiki hosts the Roblox game. -->
+  <section class="border-t border-border py-7 sm:py-9" aria-labelledby="play-online-title">
+    <div class="rounded-xl border border-border bg-card p-5 sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Official game link</p>
+      <h2 id="play-online-title" class="mt-2 text-xl font-extrabold tracking-tight sm:text-2xl">Where can I play Steal a Superpower online?</h2>
+      <p class="mt-3 text-sm leading-relaxed text-foreground">
+        Play Steal a Superpower on <a href="https://www.roblox.com/games/74183246285569/Steal-a-Superpower" target="_blank" rel="noopener noreferrer" class="font-semibold text-nav hover:underline">its Roblox game page</a>. The game is free to start; Roblox may offer optional paid items. This fan-made wiki provides guides and code references, not a browser-playable copy of the game.
+      </p>
+      <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+        On a computer, opening the Roblox website generally launches the Roblox app or prompts you to install it. On a phone or tablet, use the Roblox app and check whether the game currently supports your device.
+      </p>
+      <a href={listPath('guides', locale)} class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-nav hover:underline">
+        New player? Read the beginner guide <Icon name="lucide:arrow-right" class="h-4 w-4" />
+      </a>
+    </div>
+  </section>
+
   <!-- Evidence-backed highlights: original game screenshots, not third-party image hotlinks. -->
   <section class="border-t border-border py-9 sm:py-12" aria-labelledby="featured-powers-title">
     <div class="flex flex-wrap items-end justify-between gap-3">
