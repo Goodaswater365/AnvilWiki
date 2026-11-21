@@ -317,24 +317,44 @@
       ]
     },
     "faq": {
-      "title": "Frequently Asked Questions",
-      "description": "General information about this game and independent wiki.",
+      "title": "Steal a Superpower: Play, Download & Beginner FAQ",
+      "description": "Quick answers about playing on Roblox, phones, downloads, free access, cards and troubleshooting.",
       "items": [
         {
+          "question": "Where can I play Steal a Superpower online?",
+          "answer": "Play the game on its official Roblox experience page (place ID 74183246285569). This is an independent guide website, not a place to launch the game directly in your browser."
+        },
+        {
+          "question": "Can I play Steal a Superpower in a browser without downloading anything?",
+          "answer": "You can open its Roblox game page in a web browser, but playing generally requires the Roblox app or player. There is no official browser-only version hosted on this wiki."
+        },
+        {
+          "question": "Can I play Steal a Superpower on Android or iPhone?",
+          "answer": "Roblox has Android and iPhone apps. Install Roblox, open the game's Roblox page and check whether the experience currently supports your device; support can change."
+        },
+        {
+          "question": "Is Steal a Superpower free to play?",
+          "answer": "The game is free to start on Roblox. Some Roblox experiences offer optional Robux purchases; check the game's current Store tab for available paid items."
+        },
+        {
+          "question": "How do I start playing Steal a Superpower?",
+          "answer": "Open ability packs, learn and level your first card, place eligible cards on base holders to earn Cash, then upgrade Power or Health as needed before fighting zone bosses. See our beginner guide for the full route."
+        },
+        {
+          "question": "How can I get better powers in Steal a Superpower?",
+          "answer": "Collect ability packs, compare the card's moves and rarity, and level the card you use to unlock its stronger move. Do not assume a card with higher Cash income is automatically better in combat."
+        },
+        {
+          "question": "Are there any working Steal a Superpower codes?",
+          "answer": "Our Codes page separates developer-announced codes from third-party reports. An announcement does not prove a code still redeems today, so check its verification status before relying on it."
+        },
+        {
+          "question": "What should I do if Steal a Superpower will not load or keeps crashing?",
+          "answer": "Try restarting Roblox, checking your connection, updating the Roblox app, and opening another experience to see whether the issue is game-specific. Check Roblox's official status page for platform-wide outages."
+        },
+        {
           "question": "What is Steal a Superpower?",
-          "answer": "Steal a Superpower is a Roblox game. This fan-made wiki is being developed to document gameplay and strategies."
-        },
-        {
-          "question": "Is this an official website?",
-          "answer": "No. This wiki is independently maintained and is not affiliated with Roblox or the game's developers."
-        },
-        {
-          "question": "Where can I find verified codes?",
-          "answer": "Check the Codes section. Codes will only be labeled active after verification."
-        },
-        {
-          "question": "Where are the beginner guides?",
-          "answer": "Start with the Guides section. Additional content is being prepared."
+          "answer": "Steal a Superpower is a Roblox game by 11 R$ Productions about collecting ability cards, earning base Cash and defeating Dominus bosses. This wiki is independent and is not affiliated with Roblox or the developer."
         }
       ]
     },
